@@ -61,7 +61,7 @@ class AuthenticationController extends Controller
 
         
         
-        $validated['role_id'] = Roles::ADMIN;
+        $validated['role_id'] = Roles::USER;
 
         $user = User::create($validated);
         
