@@ -36,8 +36,11 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'car_name' => 'required'
+        ]);
         try {
-            $car = Car::create($request->all());
+            $car = Car::create($request->only('car_name'));
         } catch(\Exception $e) {
             return response()->fail('something happened');
         }

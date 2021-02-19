@@ -39,7 +39,7 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'name'  =>  'required',
             'name_ar'  =>  'required',
-            'image'  =>  'required',
+            // 'image'  =>  'required',
             'price' => 'required',
             'car_id' => 'required|exists:cars,id'
         ]);
@@ -48,7 +48,9 @@ class ProductController extends Controller
             return response()->fail($validator->errors(), 422);
         }
 
-        $data = request()->all();
+        $data = request()->only('name','name_ara','price','car_id');
+
+        $data['image'] = '1.png';
 
         $product = Product::create($data);
 
@@ -91,7 +93,7 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'name'  =>  'required',
             'name_ar'  =>  'required',
-            'image'  =>  'file',
+            // 'image'  =>  'file',
             'price' => 'required',
             'car_id' => 'required|exists:cars,id'
         ]);
