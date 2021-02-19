@@ -61,7 +61,7 @@ class AuthenticationController extends Controller
 
         
         
-        $validated['role_id'] = Roles::ADMIN;
+        $validated['role_id'] = Roles::USER;
 
         $user = User::create($validated);
         
@@ -74,9 +74,12 @@ class AuthenticationController extends Controller
 
     public function logout(Request $request)
     {
-        $user = Auth::user();
-
+        
         Auth::logout();
+        
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
 
         return redirect(route('home'));
     }

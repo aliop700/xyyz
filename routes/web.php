@@ -23,7 +23,7 @@ Route::middleware(['auth.custom', 'admin.custom'])->group(function() {
 
 });
 
-Route::middleware('guest')->group(function(){
+Route::middleware('guest.custom')->group(function(){
     Route::get('/login', 'AuthenticationController@loginPage')->name('loginPage');
     Route::post('/login', 'AuthenticationController@login')->name('loginPost');
     Route::get('/register', 'AuthenticationController@registerPage')->name('regPage');
@@ -34,4 +34,5 @@ Route::middleware('guest')->group(function(){
 Route::get('/admin', function() {
     return view('admin');
 })->name('admin');
+Route::post('/logout','AuthenticationController@logout')->name('logout');
 Route::get('/', 'LandingController')->name('home');
