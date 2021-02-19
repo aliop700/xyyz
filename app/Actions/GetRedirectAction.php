@@ -11,11 +11,11 @@ class GetRedirectAction
     {
         $roleId = $user->role_id;
 
-        switch($role_id) {
+        switch($roleId) {
             case Roles::ADMIN:
                 return route('admin');
             case Roles::USER:
-                return route();
+                return route('home');
             default:
                 throw new \Exception;
         }
