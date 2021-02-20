@@ -54,7 +54,28 @@
 </div>
 
 <div class="clearfix"></div>
+<script>
+	function addOrder(){
+		var products = [{product_id: 1 , quantity : 2 } , {product_id : 2 , quantity : 3}];
+		var payload ={
+			products: products,
+			delivery_method:'DHL'
+		}
 
+		$.ajax({
+               type: "POST",
+               url: '/orders',
+			   data: payload,
+               success: function(res) 
+                  {
+                    alert('success')
+                  },
+                  error: function(){
+                     alert('failure');
+                  }
+               });
+	}
+</script>
 <!--fotter-->
 
 @include('components.footer');

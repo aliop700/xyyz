@@ -79,12 +79,6 @@
             <tbody>
               
             </tbody>
-            <tfoot>
-               <tr>
-                  <th>id</th>
-                  <th>Car Name</th>
-               </tr>
-            </tfoot>
          </table>
       </div>
       <script src="js/jquery.min.js"></script>
@@ -119,6 +113,7 @@ function addCar(){
          {
             $('#add_car_modal').modal('hide');
             alert("success");
+            location.reload(true);
          },
 			error: function(){alert('failure');}
     	});
@@ -126,23 +121,38 @@ function addCar(){
 function getCars(){
    // cars
    $.ajax({
-      type: "POST",
+      type: "get",
       url: '/cars',
-      data: {car_name:carName },
-			success: function() 
+      success: function(res) 
          {
-            $('#add_car_modal').modal('hide');
-            alert("success");
+            console.log(res.data)
+            if(res.data.length){
+               $('#cars tbody').empty();
+               res.data.forEach(function(car){
+                  $('#cars tbody').append(
+                     '<tr>'+
+                     '<td>'+car.id+'</td>'+
+                     '<td>'+car.car_name+'</td>'+
+                     '</tr>'
+                  )
+               })
+            }else{
+               $('#cars tbody').append('<tr> There is no Cars</tr>');
+            }
+            $('#cars').DataTable();
+
          },
-			error: function(){alert('failure');}
+			error: function(){
+           $('#cars').DataTable();
+            alert('failure');
+         }
     	});
-       $('#cars').DataTable();
        
 }
 
 $(document).ready(function() {
    getCars();
-} );
+});
   
 </script>
 @include('components.admin_footer');

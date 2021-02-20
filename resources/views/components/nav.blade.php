@@ -1,14 +1,14 @@
 
 	 <div class="container main-navbar">
 	     <div class="main-header">
-		 	  @if(auth()->check()):
+		 	  @if(auth()->check())
 			  <div class="carting">
 				 <ul><li><a href="#" onclick="document.getElementById('logout-form').submit()"> Logout</a></li></ul>
 			  </div>
 			  <form id="logout-form" action="{{route('logout')}}" method="post" style="display:none" >
 				<input type="submit">
 			  </form>	
-			  @else:
+			  @else
 			  <div class="carting">
 				 <ul><li><a href="{{route('loginPage')}}"> Login</a></li></ul>
 			  </div>

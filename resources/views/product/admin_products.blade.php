@@ -52,21 +52,19 @@
         <form id="create_product_form">
             <div class="form-group">
                 <label class="label-control">Product Name: </label>
-                <input type="text" class="form-control" required name="name_eng" >
+                <input type="text" class="form-control" required name="name" >
             </div>
         <div class="form-group">
                 <label class="label-control">Product Name Arabic: </label>
-                <input type="text" class="form-control" required name="name_ara">
+                <input type="text" class="form-control" required name="name_ar">
             </div>
             <div class="form-group">
                 <label class="label-control">Description: </label>
-                <textarea  class="form-control" required name="desc_eng" row="3">
-                </textarea>
+                <textarea  class="form-control" required name="desc" row="3"></textarea>
             </div>
             <div class="form-group">
                 <label class="label-control">Description Arabic: </label>
-                <textarea  class="form-control" required name="desc_ara" row="3">
-                </textarea>
+                <textarea  class="form-control" required name="desc_ar" row="3"></textarea>
             </div>
             <div class="form-group">
                 <label class="label-control">Price:</label>
@@ -75,15 +73,15 @@
             <div class="form-group">
                 <label class="label-control">Type Of Car:</label>
                 
-                <select class="form-control" required id="car">
-                    <option>Hyndai</option>
-                    <option>BMW</option>
+                <select class="form-control" name="car_id" required id="car_id">
+                    <option value="1">Hyndai</option>
+                    <option value="2">BMW</option>
                 </select>
             </div>	
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="create_product_submit">Add</button>
+          <button type="button" class="btn btn-primary"  id="create_product_submit" onclick="addProduct()">Add</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -165,9 +163,56 @@
       <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
       <script src="js/main.js"></script>
       <script>
+         $('#add_car_form input[name="name"]').on('keyup',function(){
+         var car_name = $(this).val().trim();
+            if(!car_name){
+               $('#add_car_submit').attr('disabled', true);
+            }else{
+               $('#add_car_submit').removeAttr('disabled', true);
+            }
+         });
+
+         function addProduct(){
+            var payload ={};
+            $('#create_product_form input, #create_product_form textarea, #create_product_form select').each(function(){
+               payload[$(this).attr('name')] = $(this).val() ? $(this).val().trim() : '';
+            })
+            $.ajax({
+               type: "POST",
+               url: '/products',
+               data: payload,
+                  success: function() 
+                  {
+                     $('#create_product_modal').modal('hide');
+                     alert("success");
+                  },
+                  error: function(){alert('failure');}
+               });
+         }
+         function getProducts(){
+            // cars
+            $.ajax({
+               type: "get",
+               url: '/cars',
+               success: function(res) 
+                  {
+                     console.log(res.data)
+                     if(res.data.length){
+                     }
+                     $('#products').DataTable();
+
+                  },
+                  error: function(){
+                  $('#products').DataTable();
+                     alert('failure');
+                  }
+               });
+               
+         }
+
          $(document).ready(function() {
-           $('#example').DataTable();
-         } );
+            getProducts();
+         });
       </script>
 <!--fotter-->
 
