@@ -57,7 +57,7 @@ class ProductController extends Controller
             return response()->fail($validator->errors(), 422);
         }
 
-        $data = request()->only('name','name_ara','price','car_id');
+        $data = request()->only('name','name_ar','price','car_id');
 
         $data['image'] = '1.png';
 
