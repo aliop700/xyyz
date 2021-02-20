@@ -50,6 +50,8 @@ class ProductController extends Controller
             'name_ar'  =>  'required',
             // 'image'  =>  'required',
             'price' => 'required',
+            'desc' => 'required',
+            'desc_ar' => 'required',
             'car_id' => 'required|exists:cars,id'
         ]);
 
@@ -57,7 +59,7 @@ class ProductController extends Controller
             return response()->fail($validator->errors(), 422);
         }
 
-        $data = request()->only('name','name_ar','price','car_id');
+        $data = request()->only('name','name_ar','price','car_id','desc','desc_ar');
 
         $data['image'] = '1.png';
 

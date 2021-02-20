@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->float('price', 8, 2);
             $table->text('desc');
+            $table->text('desc_ar');
             $table->string('car_id');
             $table->timestamps();
         });
