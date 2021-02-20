@@ -11,7 +11,9 @@
 <div class="features" id="features">
 	 <div class="container">
 		 <div class="tabs-box market_gellary">
-			
+			@foreach($products as $product)
+				{{$product->name}}
+			@endforeach
 		 <div class="tab-grids ">
 			 <div id="tab1" class="tab-grid1">			   				  
 				 <a href="{{route('product_view')}}"><div class="product-grid">					  
