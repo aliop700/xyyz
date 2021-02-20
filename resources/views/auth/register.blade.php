@@ -8,6 +8,17 @@
  
 <div class="login">
 	 <div class="container">
+    @if($errors->any())
+   <div class="container">
+      <div class="alert alert-warning">
+         <ul>
+         @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+         @endforeach
+         </ul>
+      </div>
+      </div>
+      @endif
 		  <div class="login-register-box  login-right">
 		  <form name="Register_form" method="post" id="Register_form" action="{{route('regPost')}}">
             @csrf   
@@ -17,7 +28,7 @@
 
 					 <ul>
 						 <li class="text-info">First Name: </li>
-						 <li><input required type="text" name="firstName" ></li>
+						 <li><input required type="text" name="name" ></li>
 					 </ul>
 					 <ul>
 						 <li class="text-info">Last Name: </li>
@@ -34,13 +45,13 @@
 					 <ul>
 						 <li class="text-info">Confirm Password:</li>
 						 <li>
-						 	<input required type="password" name="confirmPassword">
+						 	<input required type="password" name="password_confirmation">
 							 <span class="danger error hidden  confirmPassError"> confirm password not matching with password</span>
 						 </li>
 					 </ul>
 					 <ul>
 						 <li class="text-info">Mobile Number:</li>
-						 <li><input required type="text" name="mobileNumber"></li>
+						 <li><input required type="text" name="phone"></li>
 					 </ul>	
  					 <ul>
 						 <li class="text-info">Country:</li>
