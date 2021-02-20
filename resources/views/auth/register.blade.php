@@ -27,13 +27,9 @@
 	        	 <h2>Register</h2>
 
 					 <ul>
-						 <li class="text-info">First Name: </li>
+						 <li class="text-info">Name: </li>
 						 <li><input required type="text" name="name" ></li>
-					 </ul>
-					 <ul>
-						 <li class="text-info">Last Name: </li>
-						 <li><input required type="text"   name="lastName"></li>
-					 </ul>				 
+					 </ul>		 
 					<ul>
 						 <li class="text-info">Email: </li>
 						 <li><input required type="text" name="email"></li>
