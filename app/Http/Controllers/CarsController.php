@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Car; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class CarsController extends Controller
 {
@@ -39,13 +40,17 @@ class CarsController extends Controller
         $validator = Validator::make($request->all(), [
             'car_name' => 'required'
         ]);
+
         try {
+            // dd($request->only('car_name'));
             $car = Car::create($request->only('car_name'));
         } catch(\Exception $e) {
+            // dd($e->getMessage());
             return response()->fail('something happened');
         }
 
         return response()->success($car, 201);
+    
     }
 
     /**
