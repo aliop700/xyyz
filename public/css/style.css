@@ -4289,3 +4289,7 @@ display: none;
 .alert-warning li{
 	list-style: none;
 }
+input[disabled] , button[disabled]{
+	opacity: .4;
+	pointer-events: none;
+}

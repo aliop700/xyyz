@@ -50,19 +50,15 @@
           <h4 class="modal-title">Add Car</h4>
         </div>
         <div class="modal-body">
-        <form id="create_product_form">
+        <form id="add_car_form">
             <div class="form-group">
                 <label class="label-control">Car Name: </label>
-                <input type="text" class="form-control" required name="name_eng" >
-            </div>
-        <div class="form-group">
-                <label class="label-control">Car Name Arabic: </label>
-                <input type="text" class="form-control" required name="name_ara">
+                <input type="text" class="form-control" required name="name" >
             </div>
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="create_product_submit">Add</button>
+          <button type="button" disabled ="true" class="btn btn-primary" onclick="addCar()" id="add_car_submit">Add</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -73,67 +69,20 @@
 <!-- end modal -->
 </div>
       <div class="main-content-admin container">
-         <table id="example" class="table table-striped table-bordered" style="width:100%">
+         <table id="cars" class="table table-striped table-bordered" style="width:100%">
             <thead>
                <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                   <th>id</th>
+                  <th>Car Name</th>
                </tr>
             </thead>
             <tbody>
-               <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-               </tr>
-               <tr>
-                  <td>Garrett Winters</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>63</td>
-                  <td>2011/07/25</td>
-                  <td>$170,750</td>
-               </tr>
-               <tr>
-                  <td>Ashton Cox</td>
-                  <td>Junior Technical Author</td>
-                  <td>San Francisco</td>
-                  <td>66</td>
-                  <td>2009/01/12</td>
-                  <td>$86,000</td>
-               </tr>
-               <tr>
-                  <td>Cedric Kelly</td>
-                  <td>Senior Javascript Developer</td>
-                  <td>Edinburgh</td>
-                  <td>22</td>
-                  <td>2012/03/29</td>
-                  <td>$433,060</td>
-               </tr>
-               <tr>
-                  <td>Airi Satou</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>33</td>
-                  <td>2008/11/28</td>
-                  <td>$162,700</td>
-               </tr>
+              
             </tbody>
             <tfoot>
                <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>id</th>
+                  <th>Car Name</th>
                </tr>
             </tfoot>
          </table>
@@ -143,13 +92,59 @@
       <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
       <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
       <script src="js/main.js"></script>
-      <script>
+      <!-- <script>
          $(document).ready(function() {
            $('#example').DataTable();
          } );
-      </script>
+      </script> -->
 <!--fotter-->
+<script>
 
+$('#add_car_form input[name="name"]').on('keyup',function(){
+   var car_name = $(this).val().trim();
+   if(!car_name){
+      $('#add_car_submit').attr('disabled', true);
+   }else{
+      $('#add_car_submit').removeAttr('disabled', true);
+   }
+});
+
+function addCar(){
+   var carName= $('#add_car_form input[name="name"]').val().trim();
+   $.ajax({
+      type: "POST",
+      url: '/cars',
+      data: {car_name:carName },
+			success: function() 
+         {
+            $('#add_car_modal').modal('hide');
+            alert("success");
+         },
+			error: function(){alert('failure');}
+    	});
+}
+function getCars(){
+   // cars
+   $.ajax({
+      type: "POST",
+      url: '/cars',
+      data: {car_name:carName },
+			success: function() 
+         {
+            $('#add_car_modal').modal('hide');
+            alert("success");
+         },
+			error: function(){alert('failure');}
+    	});
+       $('#cars').DataTable();
+       
+}
+
+$(document).ready(function() {
+   getCars();
+} );
+  
+</script>
 @include('components.admin_footer');
 
 @endsection
