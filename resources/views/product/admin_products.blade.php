@@ -2,6 +2,10 @@
 
 @section('title', 'Index')
 @section('content')
+
+@php 
+  $lang =  'eng'; 
+@endphp 
 <!--header-->
 <div class="header2 text-center"></div>
 <!--header//-->
@@ -92,69 +96,17 @@
 <!-- end modal -->
 </div>
       <div class="main-content-admin container">
-         <table id="example" class="table table-striped table-bordered" style="width:100%">
+         <table id="products" class="table table-striped table-bordered" style="width:100%">
             <thead>
                <tr>
+                  <th>Id</th>
                   <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Car</th>
                </tr>
             </thead>
-            <tbody>
-               <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-               </tr>
-               <tr>
-                  <td>Garrett Winters</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>63</td>
-                  <td>2011/07/25</td>
-                  <td>$170,750</td>
-               </tr>
-               <tr>
-                  <td>Ashton Cox</td>
-                  <td>Junior Technical Author</td>
-                  <td>San Francisco</td>
-                  <td>66</td>
-                  <td>2009/01/12</td>
-                  <td>$86,000</td>
-               </tr>
-               <tr>
-                  <td>Cedric Kelly</td>
-                  <td>Senior Javascript Developer</td>
-                  <td>Edinburgh</td>
-                  <td>22</td>
-                  <td>2012/03/29</td>
-                  <td>$433,060</td>
-               </tr>
-               <tr>
-                  <td>Airi Satou</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>33</td>
-                  <td>2008/11/28</td>
-                  <td>$162,700</td>
-               </tr>
-            </tbody>
-            <tfoot>
-               <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-               </tr>
-            </tfoot>
+            <tbody></tbody>
          </table>
       </div>
       <script src="js/jquery.min.js"></script>
@@ -163,6 +115,9 @@
       <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
       <script src="js/main.js"></script>
       <script>
+
+         var lang='{{$lang}}';
+
          $('#add_car_form input[name="name"]').on('keyup',function(){
          var car_name = $(this).val().trim();
             if(!car_name){
@@ -184,21 +139,30 @@
                   success: function() 
                   {
                      $('#create_product_modal').modal('hide');
+                     getProducts();
                      alert("success");
                   },
                   error: function(){alert('failure');}
                });
          }
          function getProducts(){
-            // cars
             $.ajax({
                type: "get",
-               url: '/cars',
+               url: '/products',
                success: function(res) 
                   {
-                     console.log(res.data)
-                     if(res.data.length){
-                     }
+                     $('#products tbody').empty();
+                     res.data.length ? res.data.forEach(function(product){
+                        $('#products tbody').append(
+                           '<tr>'+
+                              '<td>'+product.id+'</td>'+
+                              '<td>'+lang =='eng' ? product.name : product.name_ar+'</td>'+
+                              '<td>'+lang =='eng' ? product.desc : product.desc_ar+'</td>'+
+                              '<td>'+product.price+'</td>'+
+                              '<td>'+product.car_id+'</td>'+
+                           '</tr>'
+                        )
+                     }) : '';
                      $('#products').DataTable();
 
                   },

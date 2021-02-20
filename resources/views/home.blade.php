@@ -13,9 +13,9 @@
 @php 
   $lang =  'eng'; 
 @endphp 
-@foreach($products as $product)
+<!-- @foreach($products as $product)
 				{{$product}}
-			@endforeach
+			@endforeach -->
 	 <div class="container">
 		 <div class="tabs-box market_gellary">
 			
@@ -40,7 +40,7 @@
 						</div>		
 					</div>
 				@endforeach
-		 <div class="tab-grids ">
+		 <!-- <div class="tab-grids ">
 			 <div id="tab1" class="tab-grid1">			   				  
 				 <a href="{{route('product_view')}}"><div class="product-grid">					  
 						<div class="product-img b-link-stripe-market b-animate-go  thickbox">						   
@@ -147,7 +147,7 @@
 						</div>
 						</a>						
 				</div>		
-		</div>
+		</div> -->
 
 
 </div>
