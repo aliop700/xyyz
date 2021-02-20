@@ -1,9 +1,15 @@
 
 	 <div class="container main-navbar">
 	     <div class="main-header">
+		 	  @if(auth()->check()):
+			  <div class="carting">
+				 <ul><li><a href="{{route('logout')}}"> Logout</a></li></ul>
+			  </div>
+			  @else:
 			  <div class="carting">
 				 <ul><li><a href="{{route('loginPage')}}"> Login</a></li></ul>
 			  </div>
+			  @endif;
 			 <div class="logo">
 				 <h3><a href="{{route('home')}}"><img width="200px" src="images/logo.png"/></a></h3>
 			  </div>			  
