@@ -1,44 +1,24 @@
+@extends('layouts.main')
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>Cars</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />	
-
-<script src="js/jquery.min.js"></script>
-<script src="js/main.js"></script>
-
-</head>
-
-   
-<body>
-
-
-<!--header-->
+@section('title', 'Index')
+@section('content')
 
 
 <div class="login-page">
-<div class="header_login text-center">
-	 <div class="container">
-		 <div class="main-header">
-			  <div class="carting">
-				 <ul><li><a href="{{route('home')}}">Home</a></li></ul>
-				</div>
-			 <div class="logo">
-				 <h3><a href="{{route('home')}}"><img width="300px" src="images/logo.png"/></a></h3>
-			  </div>			  
-			  <div class="clearfix"></div>
-	
-		</div>
-	 </div>
-  </div>
  
 <div class="login">
 	 <div class="container">
+    @if($errors->any())
+   <div class="container">
+      <div class="alert alert-warning">
+         <ul>
+         @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+         @endforeach
+         </ul>
+      </div>
+      </div>
+      @endif
 		  <div class="login-register-box  login-right">
 		  <form name="Register_form" method="post" id="Register_form" action="{{route('regPost')}}">
             @csrf   
@@ -48,7 +28,7 @@
 
 					 <ul>
 						 <li class="text-info">First Name: </li>
-						 <li><input required type="text" name="firstName" ></li>
+						 <li><input required type="text" name="name" ></li>
 					 </ul>
 					 <ul>
 						 <li class="text-info">Last Name: </li>
@@ -65,13 +45,13 @@
 					 <ul>
 						 <li class="text-info">Confirm Password:</li>
 						 <li>
-						 	<input required type="password" name="confirmPassword">
+						 	<input required type="password" name="password_confirmation">
 							 <span class="danger error hidden  confirmPassError"> confirm password not matching with password</span>
 						 </li>
 					 </ul>
 					 <ul>
 						 <li class="text-info">Mobile Number:</li>
-						 <li><input required type="text" name="mobileNumber"></li>
+						 <li><input required type="text" name="phone"></li>
 					 </ul>	
  					 <ul>
 						 <li class="text-info">Country:</li>

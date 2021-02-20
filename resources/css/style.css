@@ -1883,9 +1883,7 @@ a.cpns:hover{
 	padding:0;
 }
 /*--registration--*/
-.registration-form,.login{
-padding: 4em 0;
-}
+
 .login{
 	min-height:700px;
 }
@@ -2663,7 +2661,7 @@ a.order {
   margin: 2em 0 0 0;
 }
 .registration-form, .login {
-  padding: 2em 0;
+  padding: 120px 0 2em;
 }
 .login {
   min-height: 698px;
