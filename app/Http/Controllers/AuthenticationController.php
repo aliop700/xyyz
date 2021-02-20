@@ -8,6 +8,7 @@ use App\User;
 use App\Actions\GetRedirectAction;
 use App\Consts\Roles;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class AuthenticationController extends Controller
 {
@@ -62,6 +63,7 @@ class AuthenticationController extends Controller
         
         
         $validated['role_id'] = Roles::USER;
+        $validated['password'] = Hash::make($validated['password']);
 
         $user = User::create($validated);
         
