@@ -27,7 +27,15 @@ class ProductController extends Controller
     {
         return view('product.create');
     }
-
+    public function view()
+    {
+        return view('product.view');
+    }
+    
+    public function checkout()
+    {
+        return view('product.checkout');
+    }
     /**
      * Store a newly created resource in storage.
      *

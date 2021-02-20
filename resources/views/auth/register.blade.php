@@ -1,41 +1,10 @@
+@extends('layouts.main')
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>Cars</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />	
-
-<script src="js/jquery.min.js"></script>
-<script src="js/main.js"></script>
-
-</head>
-
-   
-<body>
-
-
-<!--header-->
+@section('title', 'Index')
+@section('content')
 
 
 <div class="login-page">
-<div class="header_login text-center">
-	 <div class="container">
-		 <div class="main-header">
-			  <div class="carting">
-				 <ul><li><a href="{{route('home')}}">Home</a></li></ul>
-				</div>
-			 <div class="logo">
-				 <h3><a href="{{route('home')}}"><img width="300px" src="images/logo.png"/></a></h3>
-			  </div>			  
-			  <div class="clearfix"></div>
-	
-		</div>
-	 </div>
-  </div>
  
 <div class="login">
 	 <div class="container">
