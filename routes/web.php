@@ -23,6 +23,11 @@ Route::middleware(['auth.custom', 'admin.custom'])->group(function() {
 
 });
 
+Route::get('/cars','CarsController@index');
+Route::get('/cars/{id}','CarsController@show');
+Route::get('/products','CarsController@index');
+Route::get('/products/{id}','CarsController@show');
+
 Route::middleware('guest.custom')->group(function(){
     Route::get('/login', 'AuthenticationController@loginPage')->name('loginPage');
     Route::post('/login', 'AuthenticationController@login')->name('loginPost');
