@@ -26,7 +26,7 @@ Route::middleware(['auth.custom', 'admin.custom'])->group(function() {
 Route::get('/cars','CarsController@index');
 Route::get('/cars/{id}','CarsController@show');
 Route::get('/products','ProductController@index');
-Route::get('/products/{id}','ProductController@show');
+Route::get('/products/{id}','ProductController@show')->name('product_view');
 
 Route::middleware('guest.custom')->group(function(){
     Route::get('/login', 'AuthenticationController@loginPage')->name('loginPage');
@@ -41,9 +41,9 @@ Route::get('/admin', function() {
 })->name('admin');
 Route::post('/logout','AuthenticationController@logout')->name('logout');
 Route::get('/', 'LandingController')->name('home');
-Route::get('/productView',function(){
-    return view('product.view');
-})->name('product_view');
+// Route::get('/productView',function(){
+//     return view('product.view');
+// })->name('product_view');
 
 Route::get('/checkout',function(){
     return view('product.checkout');
