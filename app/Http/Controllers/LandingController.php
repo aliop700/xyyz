@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class LandingController extends Controller
 {
@@ -14,6 +15,7 @@ class LandingController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('home');
+        $products = Product::all();
+        return view('home')->with(compact('products'));
     }
 }
