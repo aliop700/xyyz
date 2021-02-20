@@ -41,6 +41,7 @@ ol.breadcrumb li.active{
    position:relative;
    background-attachment: fixed;
    background-position-y: 42%;
+   padding-top:110px;
 }
 .main-header{
 	text-align:center;
@@ -1889,9 +1890,7 @@ padding: 4em 0;
 .login{
 	min-height:700px;
 }
-.reg{
-margin-top:2em;
-}
+
 .log{
 	margin:2em 0 0em 0;
 	padding: 0;
@@ -3815,7 +3814,6 @@ ul.place li {
     padding: 8px;
     font-size: 1em;
     font-weight: 400;
-    border: 1px solid #D6D6D6;
     outline: none;
 	color: #5d5959;
 	border-radius: 4px;
@@ -3831,6 +3829,15 @@ background: url(../images/banner666.jpg) no-repeat 0px 0px;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	width:100%;
+}
+
+.danger{
+	color:#ff3838;
+}
+form .error{
+	font-size: 14px;
+	margin: 10px 0;	
+	display: block;
 }
 
 .Register-btn, form .submit-btn{
@@ -4134,3 +4141,10 @@ transition: 0.5s all;
 	padding:20px;
 }
 
+.main-navbar{
+	position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+	z-index: 11;
+}

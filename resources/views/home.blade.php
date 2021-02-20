@@ -2,6 +2,12 @@
 
 @section('title', 'Index')
 @section('content')
+<div class="header">
+	<div class="caption">
+		<h1>SOFTWARE & CARS</h1>	 
+		<p>Take care of your car, your car is our priority. </p>
+	</div>
+</div>
 <div class="features" id="features">
 	 <div class="container">
 		 <div class="tabs-box market_gellary">
@@ -156,7 +162,7 @@
 	 </div>
 </div>
 <!--fotter//-->
-<div class="fotter-logo">
+<!-- <div class="fotter-logo">
 	 <div class="container">
 	 <div class="ftr-logo"><h3><a href="index.html"><img src="images/white_logo.png" width="150px" alt=""></a></h3></div>
 	 <div class="ftr-info">
@@ -164,6 +170,7 @@
 	</div>
 	 <div class="clearfix"></div>
 	 </div>
-</div>
+</div> -->
+@include('components.footer')
 
 @endsection

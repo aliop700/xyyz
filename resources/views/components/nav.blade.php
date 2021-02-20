@@ -1,5 +1,5 @@
-<div class="header">
-	 <div class="container">
+
+	 <div class="container main-navbar">
 	     <div class="main-header">
 			  <div class="carting">
 				 <ul><li><a href="{{route('loginPage')}}"> تسجيل الدخول</a></li></ul>
@@ -14,8 +14,3 @@
 		 </div>
 		<div class="clearfix"></div>			   	
 	 </div>
-		 <div class="caption">
-		 <h1>SOFTWARE & CARS</h1>	 
-		 <p>Take care of your car, your car is our priority. </p>
-	     </div>
-</div>
