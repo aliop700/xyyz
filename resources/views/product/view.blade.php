@@ -33,7 +33,7 @@
               <div class="product-options col-md-6">
       <p class="title" for="quantity">QUANTITY</p>
       <span>
-         <input name="quantity" class="form-control" type="number" value="1"/>
+         <input name="quantity" class="form-control" id="quantity" type="number" onkeyup="if(this.value<1){this.value= this.value * -1}" min="1" value="1"/>
       </span>
     </div>
   
@@ -46,7 +46,7 @@
       </div>
 
         <div class="col-md-12 attribute-group">
-          <a  class="item_add" href="{{route('checkout')}}"> Add
+          <a  class="item_add add_item_to_basket" onclick="addItemToBasket()" > Add To Basket
             </a>
         </div>
 
@@ -62,8 +62,27 @@
 
 	</div>
 	</form>
-		 <div class="clearfix"></div>
-
+<div class="clearfix"></div>
+{{$product->id}}
+<script>
+  function addItemToBasket(){
+    var product_id ='{{$product->id}}';
+    var quantity_val = $('#quantity').val();
+    var product= {product_id: product_id , quantity : quantity_val };
+    var basket_count= 1;
+    var basket_items= localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')) : null ;
+    if(basket_items == null){
+      localStorage.setItem('basket', JSON.stringify ([product]) )
+    }else{
+      basket_items.push(product);
+      basket_count = basket_items.length;
+      localStorage.setItem('basket',JSON.stringify (basket_items));
+    }
+   $('.basket-count').html( basket_count);
+   $('.checkout-container').addClass('show')
+   
+  }
+</script>
 <!--fotter-->
 
 @include('components.footer');

@@ -385,10 +385,11 @@ border:2px solid #fff;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-o-border-radius: 5px;
-	margin: 0px 16px 0px 0px;
+	margin:16px 0px;
 	background: #3c3b3b;
 	border:none;
 	outline:none;
+	cursor: pointer;
 }
 .prt_name{
 	padding: 0.8em 1.2em;
@@ -2434,7 +2435,6 @@ p.product_descr{
   float: none;
 }
 .item_add {
-  margin: 0px 16px 18px 0px;
   float: none;
 }
 }
@@ -2792,7 +2792,6 @@ span.item_price {
 .item_add {
   padding: 0.5em 1.5em;
   font-size: 0.9em;
-  margin: 0px 0px 18px 0px;
 }
 
 .carting ul li a {
@@ -3531,7 +3530,6 @@ ul.tabs-menu {
 }
 .item_add {
   font-size: 0.8em;
-  margin: 0px 0px 0px 0px;
 }
 .product-info-cust {
   padding: 0.8em 1.2em 0.8em;
@@ -4296,8 +4294,17 @@ input[disabled] , button[disabled]{
 
 .checkout-container{
 	background: #5cb85c;
-	padding:50px 10px;
+	padding:23px 10px;
 	text-align: center;
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    z-index: 111;
+	top: 100%;
+}
+.checkout-container.show{
+	top: unset;
 }
 .checkout-container .basket-info{
 	color:#fff;
@@ -4324,4 +4331,13 @@ input[disabled] , button[disabled]{
 	50% {
 	  opacity: 0;
 	}
+  }
+
+  @media(max-width:550px){
+	  .basket-info h1{
+		  font-size: 16px;
+	  }
+	  .checkout-container {
+		padding: 10px 10px;
+	  }
   }

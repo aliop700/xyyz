@@ -6,6 +6,8 @@
 		<a  href="{{route('checkout')}}" class="btn btn-primary btn-lg checkout-btn">Checkout Now</a>
 	</div>
 </div>
+
+
 <div class="fotter">
 	 <div class="container">
 	 <div class="col-md-6 contact">
@@ -49,3 +51,13 @@
 	 <div class="clearfix"></div>
 	 </div>
 </div>
+
+<script src="/js/jquery.min.js"></script>
+
+<script>
+	var basket_items= localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')) : null ;
+	if(basket_items != null){
+		$('.basket-count').html(basket_items.length)
+		$('.checkout-container').addClass('show');
+	}
+</script>

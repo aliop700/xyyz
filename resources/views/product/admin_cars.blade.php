@@ -72,13 +72,11 @@
          <table id="cars" class="table table-striped table-bordered" style="width:100%">
             <thead>
                <tr>
-                   <th>id</th>
+                  <th>Id</th>
                   <th>Car Name</th>
                </tr>
             </thead>
-            <tbody>
-              
-            </tbody>
+            <tbody></tbody>
          </table>
       </div>
       <script src="js/jquery.min.js"></script>
@@ -86,11 +84,6 @@
       <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
       <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
       <script src="js/main.js"></script>
-      <!-- <script>
-         $(document).ready(function() {
-           $('#example').DataTable();
-         } );
-      </script> -->
 <!--fotter-->
 <script>
 
@@ -136,8 +129,6 @@ function getCars(){
                      '</tr>'
                   )
                })
-            }else{
-               $('#cars tbody').append('<tr> There is no Cars</tr>');
             }
             $('#cars').DataTable();
 

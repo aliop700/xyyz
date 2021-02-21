@@ -2,6 +2,12 @@
 
 @section('title', 'Index')
 @section('content')
+
+<style>
+	.checkout-container {
+		display:none !important;
+	  }
+</style>
 <!--header-->
 <div class="header2 text-center"></div>
 <!--header//-->
