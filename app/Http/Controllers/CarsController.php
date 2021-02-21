@@ -40,7 +40,7 @@ class CarsController extends Controller
         $validator = Validator::make($request->all(), [
             'car_name' => 'required'
         ]);
-
+            
         try {
             // dd($request->only('car_name'));
             $car = Car::create($request->only('car_name'));
