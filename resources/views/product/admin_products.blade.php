@@ -78,8 +78,7 @@
                 <label class="label-control">Type Of Car:</label>
                 
                 <select class="form-control" name="car_id" required id="car_id">
-                    <option value="1">Hyndai</option>
-                    <option value="2">BMW</option>
+                    <option value="0">For All Cars</option>
                 </select>
             </div>	
         </form>
@@ -139,30 +138,33 @@
                   success: function() 
                   {
                      $('#create_product_modal').modal('hide');
-                     getProducts();
-                     alert("success");
+                     getProducts('after_add');
                   },
                   error: function(){alert('failure');}
                });
          }
-         function getProducts(){
+         function getProducts(after_add){
+            if(!after_add){
+               getCars();
+            }
             $.ajax({
                type: "get",
                url: '/products',
                success: function(res) 
                   {
                      $('#products tbody').empty();
-                     res.data.length ? res.data.forEach(function(product){
+                      res.data.forEach(function(product){
+                         console.log(product.id,product.name,product.desc,product.price ,product.car_id )
                         $('#products tbody').append(
                            '<tr>'+
                               '<td>'+product.id+'</td>'+
-                              '<td>'+lang =='eng' ? product.name : product.name_ar+'</td>'+
-                              '<td>'+lang =='eng' ? product.desc : product.desc_ar+'</td>'+
+                              '<td>'+product.name+'</td>'+
+                              '<td>'+product.desc+'</td>'+
                               '<td>'+product.price+'</td>'+
-                              '<td>'+product.car_id+'</td>'+
+                              '<td>'+product.car_name+'</td>'+
                            '</tr>'
                         )
-                     }) : '';
+                     })
                      $('#products').DataTable();
 
                   },
@@ -173,6 +175,25 @@
                });
                
          }
+
+function getCars(){
+   // cars
+   $.ajax({
+      type: "get",
+      url: '/cars',
+      success: function(res) 
+         {
+            if(res.data.length){
+               res.data.forEach(function(car){
+                  $('#car_id').append(
+                     '<option value="'+car.id+'">'+car.car_name+'</option>'
+                  )
+               })
+            }
+
+         },
+    	});
+}
 
          $(document).ready(function() {
             getProducts();

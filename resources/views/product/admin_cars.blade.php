@@ -112,8 +112,8 @@ function addCar(){
 			success: function() 
          {
             $('#add_car_modal').modal('hide');
-            alert("success");
-            location.reload(true);
+            // location.reload(true);
+            getCars();
          },
 			error: function(){alert('failure');}
     	});

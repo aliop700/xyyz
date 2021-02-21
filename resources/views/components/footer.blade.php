@@ -1,3 +1,11 @@
+<div class="checkout-container">
+	<div class="container">
+		<div class="basket-info">
+			<h1>You Have <span class="basket-count flusher-checkout">3</span> items in basket</h1>
+		</div>
+		<a  href="{{route('checkout')}}" class="btn btn-primary btn-lg checkout-btn">Checkout Now</a>
+	</div>
+</div>
 <div class="fotter">
 	 <div class="container">
 	 <div class="col-md-6 contact">
@@ -34,7 +42,7 @@
 </div>
 <div class="fotter-logo">
 	 <div class="container">
-	 <div class="ftr-logo"><h3><a href="index.html"><img src="images/white_logo.png" width="150px" alt=""></a></h3></div>
+	 <div class="ftr-logo"><h3><a href="index.html"><img src="/images/white_logo.png" width="150px" alt=""></a></h3></div>
 	 <div class="ftr-info">
 	 
 	</div>

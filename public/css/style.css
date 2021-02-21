@@ -4293,3 +4293,35 @@ input[disabled] , button[disabled]{
 	opacity: .4;
 	pointer-events: none;
 }
+
+.checkout-container{
+	background: #5cb85c;
+	padding:50px 10px;
+	text-align: center;
+}
+.checkout-container .basket-info{
+	color:#fff;
+}
+.checkout-container .checkout-btn{
+	background:#fff !important;
+	border-color:#fff !important;
+	width: 50%;
+    min-width: 200px;
+	margin-top:15px;
+	color:#5cb85c !important;
+	transition: ease-in-out .3s;
+	box-shadow: 0 1px 10px -1px rgba(0,0,0,.25);
+}
+.checkout-container .checkout-btn:hover{
+ box-shadow: 0 10px 10px -1px rgba(0,0,0,.25);
+}
+
+.flusher-checkout {
+	animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes blinker {
+	50% {
+	  opacity: 0;
+	}
+  }
