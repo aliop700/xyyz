@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return response()->success(Product::all(), 200);
+        return response()->success(Product::whereNotNUll('id')->with('car')->get(), 200);
     }
 
     /**

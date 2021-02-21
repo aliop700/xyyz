@@ -18,7 +18,8 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id');
             $table->float('total',8,2);
             $table->string('status');
-            $table->date('date');
+            $table->string('delievery_method');
+            // $table->date('date');
             $table->timestamps();
         });
     }
