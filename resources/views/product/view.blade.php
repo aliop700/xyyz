@@ -63,12 +63,14 @@
 	</div>
 	</form>
 <div class="clearfix"></div>
-{{$product->id}}
+<script src="/js/sweet-alert.min.js"></script>
 <script>
   function addItemToBasket(){
     var product_id ='{{$product->id}}';
+    var product_name ='{{$product->name}}';
+    var product_price ='{{$product->price}}';
     var quantity_val = $('#quantity').val();
-    var product= {product_id: product_id , quantity : quantity_val };
+    var product= {product_id: product_id , quantity : quantity_val, product_name: product_name , product_price:product_price };
     var basket_count= 1;
     var basket_items= localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')) : null ;
     if(basket_items == null){
@@ -78,7 +80,18 @@
       basket_count = basket_items.length;
       localStorage.setItem('basket',JSON.stringify (basket_items));
     }
+    swal("Successfully", {
+						icon:'success',
+						buttons: {
+							cancel: false,
+							catch: {
+							text: "Ok",
+							value: true,
+							},
+						},
+					});
    $('.basket-count').html( basket_count);
+   $('.simpleCart_quantity').html( basket_count);
    $('.checkout-container').addClass('show')
    
   }

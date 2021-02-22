@@ -1,7 +1,7 @@
 <div class="checkout-container">
 	<div class="container">
 		<div class="basket-info">
-			<h1>You Have <span class="basket-count flusher-checkout">3</span> items in basket</h1>
+			<h1>You Have <span class="basket-count flusher-checkout">3</span> items in your basket</h1>
 		</div>
 		<a  href="{{route('checkout')}}" class="btn btn-primary btn-lg checkout-btn">Checkout Now</a>
 	</div>
@@ -52,12 +52,12 @@
 	 </div>
 </div>
 
-<script src="/js/jquery.min.js"></script>
 
 <script>
-	var basket_items= localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')) : null ;
-	if(basket_items != null){
+	var basket_items= localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')) : [] ;
+	if( basket_items.length != 0){
 		$('.basket-count').html(basket_items.length)
+		$('.simpleCart_quantity').html( basket_items.length);
 		$('.checkout-container').addClass('show');
 	}
 </script>

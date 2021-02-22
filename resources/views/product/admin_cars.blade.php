@@ -18,13 +18,13 @@
          </li>
          <li>
             <a href="{{route('admin_products')}}">
-               <i class="fa fa-shopping-cart"></i>
+               <i class="fa fa-microchip"></i>
                <span>Products</span>
             </a>    				
          </li>  
          <li class="active">
             <a href="{{route('admin_cars')}}">
-               <i class="fa fa-shopping-cart"></i>
+               <i class="fa fa-car"></i>
                <span>Cars</span>
             </a>    				
          </li>  
@@ -81,8 +81,8 @@
       </div>
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap3.4.1.min.js"></script>
-      <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-      <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+      <script src="/js/jquery.dataTables.min.js"></script>
+      <script src="/js/dataTables.bootstrap4.min.js"></script>
       <script src="js/main.js"></script>
 <!--fotter-->
 <script>
@@ -118,7 +118,6 @@ function getCars(){
       url: '/cars',
       success: function(res) 
          {
-            console.log(res.data)
             if(res.data.length){
                $('#cars tbody').empty();
                res.data.forEach(function(car){

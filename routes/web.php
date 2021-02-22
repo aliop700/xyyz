@@ -24,6 +24,7 @@ Route::middleware(['auth.custom', 'admin.custom'])->group(function() {
 });
 
 Route::post('/orders','OrderController@store');
+Route::get('/orders','OrderController@index');
 Route::get('/cars','CarsController@index');
 Route::get('/cars/{id}','CarsController@show');
 Route::get('/products','ProductController@index');

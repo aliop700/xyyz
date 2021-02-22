@@ -4287,7 +4287,7 @@ display: none;
 .alert-warning li{
 	list-style: none;
 }
-input[disabled] , button[disabled]{
+input[disabled] , button[disabled] a[disabled]{
 	opacity: .4;
 	pointer-events: none;
 }
@@ -4340,4 +4340,14 @@ input[disabled] , button[disabled]{
 	  .checkout-container {
 		padding: 10px 10px;
 	  }
+  }
+
+  #delivery_method_input{
+	  display: block;
+	  margin: 10px auto;
+  }
+  .delivery_method_box, .products-list-table{
+	max-width: 750px;
+	margin: 10px auto;
+	margin-bottom: 30px;
   }

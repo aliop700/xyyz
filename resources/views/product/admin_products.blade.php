@@ -6,9 +6,12 @@
 @php 
   $lang =  'eng'; 
 @endphp 
+
+
 <!--header-->
 <div class="header2 text-center"></div>
 <!--header//-->
+
 <div class="subnavbar">
 
 <div class="subnavbar-inner">
@@ -22,20 +25,19 @@
          </li>
          <li class="active">
             <a href="{{route('admin_products')}}">
-               <i class="fa fa-shopping-cart"></i>
+               <i class="fa fa-microchip"></i>
                <span>Products</span>
             </a>    				
          </li>  
          <li>
             <a href="{{route('admin_cars')}}">
-               <i class="fa fa-shopping-cart"></i>
+               <i class="fa fa-car"></i>
                <span>Cars</span>
             </a>    				
          </li>  
       </ul>
    </div> <!-- /container -->
 </div> <!-- /subnavbar-inner -->
-
 <div class="container">
     <div class="actions-btn">
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create_product_modal">Add Product</button>
@@ -110,8 +112,8 @@
       </div>
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap3.4.1.min.js"></script>
-      <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-      <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+      <script src="/js/jquery.dataTables.min.js"></script>
+      <script src="/js/dataTables.bootstrap4.min.js"></script>
       <script src="js/main.js"></script>
       <script>
 
@@ -154,7 +156,6 @@
                   {
                      $('#products tbody').empty();
                       res.data.forEach(function(product){
-                         console.log(product.id,product.name,product.desc,product.price ,product.car_id )
                         $('#products tbody').append(
                            '<tr>'+
                               '<td>'+product.id+'</td>'+
