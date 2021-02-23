@@ -608,7 +608,10 @@ i.boque{
 	color:#fff;
 	text-decoration:none;
 }
-.fotter-logo{background: #0d9feb;padding:1.5em 0;}
+.fotter-logo{
+	background: #0d9feb;
+	padding:1.5em 0;
+}
 .ftr-logo{
 float:left;
 padding-top:1em;
@@ -1890,6 +1893,7 @@ padding: 120px 0 2em;
 }
 .login{
 	min-height:700px;
+	min-height:100vh;
 }
 
 .log{
@@ -4351,3 +4355,37 @@ input[disabled] , button[disabled] a[disabled]{
 	margin: 10px auto;
 	margin-bottom: 30px;
   }
+
+  .logo img{
+	  width: 250px;
+  }
+
+  @media (max-width:950px){
+	.logo img{
+		width: 180px;
+	}
+  }
+
+  .paypal_container_box{
+	display: block;
+    margin: 0 auto;
+    max-width: 750px;
+    width: 100%;
+	position: relative;
+  }
+  .paypal_container_box .auth_mask{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height:100%;
+	z-index: 111;
+  }
+
+ /* nav { grid-area: header; }
+.main-content { grid-area: main; }
+footer { grid-area: footer; }
+
+body {
+	grid-template-areas:'header main footer';
+} */

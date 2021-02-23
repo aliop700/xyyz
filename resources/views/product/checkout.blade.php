@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Index')
+@section('title', 'Checkout')
 @section('content')
 
 <style>
@@ -36,7 +36,12 @@
 			<option>Aramax</option>
 		</select>
 		</div>
-		<div id="paypal-button-container" style="text-align: center;"></div>
+		<div class="paypal_container_box">
+			@if(!auth()->check())
+				<a class="auth_mask" onclick="askToLogin()"></a>
+			@endif
+			<div id="paypal-button-container" style="text-align: center;"></div>
+		</div>
 	</div>
 	<div class="no-data-to-checkout hidden" style="text-align:center;">
 	<i class="fa fa-frown-o danger" aria-hidden="true" style="font-size: 20vh; margin-bottom:20px;"></i>
@@ -112,6 +117,8 @@
 		}else{
 			$('.no-data-to-checkout').removeClass('hidden');
 			$('.checkout-view').addClass('hidden');
+	 	    $('.basket_icon_nav').removeClass('flusher-checkout');
+			 $('.simpleCart_quantity').html(0)
 		}
 		
 
@@ -172,9 +179,33 @@
 			},
 
         }).render('#paypal-button-container');
+
+		function askToLogin(){
+			swal("Oops!", "Something wrong, Please try again", "error");
+			swal("Info", {
+						icon:'warning',
+						title:'You are not logged in!',
+						text: "If you do not have an account, create an account in one minute!",
+						buttons: {
+							cancel: false,
+							catch: {
+								text: "Login",
+								value: 'login',
+							},
+							defeat:  {
+								text: "Register",
+								value: 'register',
+							},
+						},
+			})
+			.then(function(value) {
+				if(value == 'login'){
+					window.location.replace('/login?checkout:true');
+				}else if(value == 'register'){
+					window.location.replace('/register?checkout:true');
+
+				}
+			});
+		}
     </script>
-<!--fotter-->
-
-@include('components.footer');
-
 @endsection

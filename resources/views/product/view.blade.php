@@ -96,8 +96,5 @@
    
   }
 </script>
-<!--fotter-->
-
-@include('components.footer');
 
 @endsection

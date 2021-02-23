@@ -15,11 +15,11 @@
 			  </div>
 			  @endif
 			 <div class="logo">
-				 <h3><a href="{{route('home')}}"><img width="200px" src="/images/logo.png"/></a></h3>
+				 <h3><a href="{{route('home')}}"><img width="200px" src="/images/logo_2_1.png"/></a></h3>
 			  </div>
 		  
 			 <div class="box_1">	
-				 <a href="{{route('checkout')}}"><h3>Basket:  (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)<img src="/images/cart.png" alt=""/></h3></a>
+				 <a href="{{route('checkout')}}"><h3>Basket:  (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)<img class="basket_icon_nav" src="/images/cart.png" alt=""/></h3></a>
 			 </div>			 
 		 </div>
 		<div class="clearfix"></div>			   	

@@ -48,21 +48,18 @@
 
 </div>
       <div class="main-content-admin container">
-         <table id="example" class="table table-striped table-bordered" style="width:100%">
+       <table id="orders" class="table table-striped table-bordered" style="width:100%">
             <thead>
                <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Id</th>
+                  <th>Product Name</th>
+                  <th>Quantity</th>
+                  <th>User Name</th>
+                  <th>Phone Number</th>
+                  <th>Order Method</th>
                </tr>
             </thead>
-            <tbody>
-  
-            </tbody>
-           
+            <tbody></tbody>
          </table>
       </div>
       <script src="js/jquery.min.js"></script>
@@ -70,12 +67,36 @@
       <script src="/js/dataTables.bootstrap4.min.js"></script>
       <script src="js/main.js"></script>
       <script>
-         $(document).ready(function() {
-           $('#example').DataTable();
-         } );
-      </script>
-<!--fotter-->
+      
+         getOrders();
+         function getOrders(){
+            $.ajax({
+               type: "get",
+               url: '/orders',
+               success: function(res) 
+                  {
+                     $('#orders tbody').empty();
+                      res.data.forEach(function(order){
+                        $('#orders tbody').append(
+                           '<tr>'+
+                              '<td>'+order.id+'</td>'+
+                              '<th> Product Name</th>'+
+                              '<td>'+order.total+'</td>'+
+                              '<td>'+order.delievery_method+'</td>'+
+                              '<td>'+order.status+'</td>'+
+                           '</tr>'
+                        )
+                     })
+                     $('#orders').DataTable();
 
-@include('components.admin_footer');
+                  },
+                  error: function(){
+                  $('#orders').DataTable();
+                     alert('failure');
+                  }
+               });
+               
+         }
+      </script>
 
 @endsection

@@ -200,8 +200,5 @@ function getCars(){
             getProducts();
          });
       </script>
-<!--fotter-->
-
-@include('components.admin_footer');
 
 @endsection

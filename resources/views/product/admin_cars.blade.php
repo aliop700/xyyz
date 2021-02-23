@@ -145,6 +145,5 @@ $(document).ready(function() {
 });
   
 </script>
-@include('components.admin_footer');
 
 @endsection

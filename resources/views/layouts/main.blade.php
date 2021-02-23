@@ -5,14 +5,39 @@
         </title>
         <link href="{{asset('/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
         <link href="{{asset('/css/bootstrap-responsive.min.css')}}" rel="stylesheet" type="text/css" media="all" />
-        <link href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" media="all" />
         <link href="{{asset('/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="{{asset('/css/font-awesome.css')}}" rel="stylesheet">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/images/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#0d9feb">
+        <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+        <meta name="theme-color" content="#0d9feb">
     </head>
     <body>
-      @include('components.nav')
-      @yield('content')
+      <nav> @include('components.nav')</nav>
+      <section class="main-content"> @yield('content')</section>
+      <footer>
+        @if( auth()->user() &&  auth()->user()->isAdmin())
+           @include('components.admin_footer')
+        @elseif (\Route::current()->getName() != 'loginPage' && \Route::current()->getName() != 'regPage')
+           @include('components.footer');
+        @endif
+      </footer>
     </body>
 </html>
