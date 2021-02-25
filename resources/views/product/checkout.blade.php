@@ -30,11 +30,21 @@
 			</table>
 		</div>
 		<div class="delivery_method_box">
-			<label>delivery method</label>
-		<select name="delivery_method" class="form-control" id="delivery_method_input">
-			<option>DHL</option>
-			<option>Aramax</option>
-		</select>
+			<div class="form-group">
+				<label>delivery method</label>
+				<select name="delivery_method" class="form-control" >
+					<option>DHL</option>
+					<option>Aramex</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Location</label>
+				<input type="text" class="form-control" name="location" value="location data"/>
+			</div>
+			<div class="form-group">
+				<label>Phone Number</label>
+				<input type="phone" class="form-control" name="phone_number" value="p data"/>
+			</div>
 		</div>
 		<div class="paypal_container_box">
 			@if(!auth()->check())
@@ -181,7 +191,7 @@
         }).render('#paypal-button-container');
 
 		function askToLogin(){
-			swal("Oops!", "Something wrong, Please try again", "error");
+			// swal("Oops!", "Something wrong, Please try again", "error");
 			swal("Info", {
 						icon:'warning',
 						title:'You are not logged in!',

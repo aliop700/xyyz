@@ -19,7 +19,10 @@
 			  </div>
 		  
 			 <div class="box_1">	
+			 @if(!auth()->user() || (auth()->user() &&  !auth()->user()->isAdmin()))
 				 <a href="{{route('checkout')}}"><h3>Basket:  (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)<img class="basket_icon_nav" src="/images/cart.png" alt=""/></h3></a>
+
+			@endif
 			 </div>			 
 		 </div>
 		<div class="clearfix"></div>			   	

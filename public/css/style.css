@@ -4381,7 +4381,13 @@ input[disabled] , button[disabled] a[disabled]{
 	height:100%;
 	z-index: 111;
   }
-
+  
+  .main-content{
+	min-height: calc(100vh - 115px);
+  }
+.feild_required {
+	border-color: #ff3838;
+}
  /* nav { grid-area: header; }
 .main-content { grid-area: main; }
 footer { grid-area: footer; }

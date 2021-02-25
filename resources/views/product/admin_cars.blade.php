@@ -74,6 +74,7 @@
                <tr>
                   <th>Id</th>
                   <th>Car Name</th>
+                  <th>Delete</th>
                </tr>
             </thead>
             <tbody></tbody>
@@ -83,7 +84,7 @@
       <script src="js/bootstrap3.4.1.min.js"></script>
       <script src="/js/jquery.dataTables.min.js"></script>
       <script src="/js/dataTables.bootstrap4.min.js"></script>
-      <script src="js/main.js"></script>
+      <script src="js/sweet-alert.min.js"></script>
 <!--fotter-->
 <script>
 
@@ -125,6 +126,7 @@ function getCars(){
                      '<tr>'+
                      '<td>'+car.id+'</td>'+
                      '<td>'+car.car_name+'</td>'+
+                     '<td> <i class="fa fa-trash btn danger" onclick="deleteCar('+car.id+')"  title="Delete"></i></td>'+
                      '</tr>'
                   )
                })
@@ -138,6 +140,33 @@ function getCars(){
          }
     	});
        
+}
+
+function deleteCar(){
+   swal("", {
+            icon:'warning',
+            title:'Are you sure you wante to delete this car!',
+            buttons: {
+               catch: {
+                  text: "Delete",
+                  value: true,
+               },
+               cancel: true,
+            },
+   })
+   .then(function(value) {
+      if(value == true){
+         $.ajax({
+         type: "delete",
+         url: '/cars',
+         success: function(res) 
+            {
+               getCars();
+            },
+         });
+      }
+   });
+ 
 }
 
 $(document).ready(function() {

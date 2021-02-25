@@ -77,6 +77,11 @@
                 <input type="number" class="form-control" required name="price">
             </div>	
             <div class="form-group">
+                <label class="label-control">Product Image:</label>
+                <!-- <input type="text"  class="form-control hidden" required name="image"> -->
+                <input type="file" id="product_image" accept="image/x-png,image/gif,image/jpeg" class="form-control" required name="image">
+            </div>	
+            <div class="form-group">
                 <label class="label-control">Type Of Car:</label>
                 
                 <select class="form-control" name="car_id" required id="car_id">
@@ -105,6 +110,7 @@
                   <th>Description</th>
                   <th>Price</th>
                   <th>Car</th>
+                  <th>Actions</th>
                </tr>
             </thead>
             <tbody></tbody>
@@ -114,7 +120,7 @@
       <script src="js/bootstrap3.4.1.min.js"></script>
       <script src="/js/jquery.dataTables.min.js"></script>
       <script src="/js/dataTables.bootstrap4.min.js"></script>
-      <script src="js/main.js"></script>
+      <script src="/js/sweet-alert.min.js"></script>
       <script>
 
          var lang='{{$lang}}';
@@ -129,14 +135,36 @@
          });
 
          function addProduct(){
-            var payload ={};
+            $('#create_product_form input, #create_product_form textarea, #create_product_form select').removeClass('feild_required');
+            var payload =new FormData();
+            var empty_feild = [];
             $('#create_product_form input, #create_product_form textarea, #create_product_form select').each(function(){
-               payload[$(this).attr('name')] = $(this).val() ? $(this).val().trim() : '';
+              
+               if($(this).attr('id') == 'product_image'){
+                  var file =document.getElementById('product_image').files[0]; 
+                   payload.append( 'image', file );
+               }else{
+                  var feild_val = $(this).val() ? $(this).val().trim() : '';
+                  payload.append( $(this).attr('name') , feild_val );
+               }
+
+               if ($(this).attr('name') != 'car_id' && !$(this).val()){
+                  $(this).addClass('feild_required');
+                  empty_feild.push($(this).attr('name'));
+               }
             })
+           
+            if(empty_feild.length){
+               return false;
+            }
+
+
             $.ajax({
                type: "POST",
                url: '/products',
                data: payload,
+               processData: false,
+               contentType: false,
                   success: function() 
                   {
                      $('#create_product_modal').modal('hide');
@@ -163,6 +191,7 @@
                               '<td>'+product.desc+'</td>'+
                               '<td>'+product.price+'</td>'+
                               '<td>'+product.car_name+'</td>'+
+                              '<td> <i class="fa fa-trash btn danger" onclick="deleteProduct('+product.id+')" tooltip-title="Delete" title="Delete"></i></td>'+
                            '</tr>'
                         )
                      })
@@ -196,9 +225,58 @@ function getCars(){
     	});
 }
 
-         $(document).ready(function() {
-            getProducts();
+function deleteProduct(){
+   swal("", {
+            icon:'warning',
+            title:'Are you sure you wante to delete this product!',
+            buttons: {
+               catch: {
+                  text: "Delete",
+                  value: true,
+               },
+               cancel: true,
+            },
+   })
+   .then(function(value) {
+      if(value == true){
+         $.ajax({
+         type: "delete",
+         url: '/products',
+         success: function(res) 
+            {
+               getProducts('after_add');
+            },
          });
-      </script>
+      }
+   });
+ 
+}
+
+$(document).ready(function() {
+   getProducts();
+});
+
+// $('#product_image').on('change',function(){
+//    if($(this).val()){
+//       getImageUrl()
+//    }
+// })
+function getImageUrl(){
+   var payload = new FormData();   
+   var file =document.getElementById('product_image').files[0]; 
+   payload.append( 'file', file );
+
+   $.ajax({
+   url: 'http://example.com/script.php',
+   data: payload,
+   processData: false,
+   contentType: false,
+   type: 'POST',
+   success: function(data){
+      alert(data);
+   }
+   });
+}
+</script>
 
 @endsection
