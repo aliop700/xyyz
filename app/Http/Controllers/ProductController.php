@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Actions\UploadFileAction;
 
 class ProductController extends Controller
 {
@@ -48,11 +49,11 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'name'  =>  'required',
             'name_ar'  =>  'required',
-            // 'image'  =>  'required',
+            'image'  =>  'file',
             'price' => 'required',
             'desc' => 'required',
             'desc_ar' => 'required',
-            'car_id' => 'required|exists:cars,id'
+            // 'car_id' => 'exists:cars,id'
         ]);
 
         if($validator->fails()) {
@@ -61,10 +62,15 @@ class ProductController extends Controller
 
         $data = request()->only('name','name_ar','price','car_id','desc','desc_ar');
 
-        $data['image'] = '1.png';
+        if($request->has('image')) {
+            
+            $file = (new UploadFileAction)($request->file('image'));
+            $data['image'] = $file->id;
+        }
+        
 
         $product = Product::create($data);
-
+        
         return response()->success($product, 201);
 
 
@@ -105,9 +111,11 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'name'  =>  'required',
             'name_ar'  =>  'required',
-            // 'image'  =>  'file',
+            'image'  =>  'file',
             'price' => 'required',
-            'car_id' => 'required|exists:cars,id'
+            'desc' => 'required',
+            'desc_ar' => 'required',
+            'car_id' => 'exists:cars,id'
         ]);
 
         if($validator->fails()) {
@@ -115,7 +123,16 @@ class ProductController extends Controller
         }
 
         try {
-            DB::table(Product::getTable())->where('id', $product->id)->update($request->validated());
+            $data = $request->validated(); 
+            if($request->has('image')) {
+                
+                $file = (new UploadFileAction)($request->file('image'));
+                $fileId = $file->id;
+
+                $data+= ['image' => $fileId];
+            }
+
+            DB::table(Product::getTable())->where('id', $product->id)->update();
         } catch(\Exception $e) {
             return response()->fail('something went wrong' ,400);
         }
