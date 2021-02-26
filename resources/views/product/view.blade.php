@@ -13,9 +13,8 @@
    <div class="row">
       
 <div class="col-md-7 slider_parrent">
-	<img src="/images/product-6.jpg">
+	<img src="{{$product->file->path}}">
 </div>
-<!-- {{$product}} -->
       <div class="col-md-5 row product-detail">
 <!-- ============================= Product name and price -->      
         <div class="col-md-12">
@@ -77,7 +76,19 @@
     if(basket_items == null){
       localStorage.setItem('basket', JSON.stringify ([product]) )
     }else{
-      basket_items.push(product);
+      var product_added_index;
+      var product_added = basket_items.filter(function(item ,index){
+        if(item.product_id == product_id){
+          product_added_index = index;
+           return item;
+        }
+      })
+
+      if(product_added.length){ // if item has been added 
+        basket_items[product_added_index]['quantity'] = Number(basket_items[product_added_index]['quantity']) + Number(quantity_val);
+      }else{
+        basket_items.push(product);
+      }
       basket_count = basket_items.length;
       localStorage.setItem('basket',JSON.stringify (basket_items));
     }

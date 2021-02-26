@@ -31,7 +31,7 @@
 		</div>
 		<div class="delivery_method_box">
 			<div class="form-group">
-				<label>delivery method</label>
+				<label>Delivery Method</label>
 				<select name="delivery_method" class="form-control" >
 					<option>DHL</option>
 					<option>Aramex</option>
@@ -67,7 +67,7 @@
 
 <div class="clearfix"></div>
 <script src="/js/sweet-alert.min.js"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=AbiYw-cjDDsaJZPgD51Mz_9mSHNWj5OZC0YjjyJkDJ_1owqcrjo0go4XYREO5o4i0-nvDJE0jR6OIAmY"></script> <!-- test env-->
+<script src="https://www.paypal.com/sdk/js?client-id=AbiYw-cjDDsaJZPgD51Mz_9mSHNWj5OZC0YjjyJkDJ_1owqcrjo0go4XYREO5o4i0-nvDJE0jR6OIAmY&disable-funding=credit,card"></script> <!-- test env-->
 <script>
 	var products_in_basket = localStorage.getItem('basket') != null ? JSON.parse(localStorage.getItem('basket')) : [];
 

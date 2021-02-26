@@ -2,6 +2,9 @@ body{
 	font-family: 'Arimo', sans-serif;
 	background: #ffffff;
 	margin:0;
+	padding-right: 0  !important;
+	padding-left: 0  !important;
+
 }
 body a{
 	transition:0.5s all;
@@ -3132,6 +3135,7 @@ ul.tabs-menu {
 .main-header .box_1{
     width: 100%;
     padding: 10px 29%;
+	display: none;
 }
 .box_1 p {
   line-height: 18px;
