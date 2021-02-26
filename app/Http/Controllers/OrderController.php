@@ -18,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return response()->success(Order::all());
+        return response()->success(Order::with('items','items.product')->get());
     }
 
     /**
