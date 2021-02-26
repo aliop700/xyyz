@@ -139,13 +139,14 @@
             var payload =new FormData();
             var empty_feild = [];
             $('#create_product_form input, #create_product_form textarea, #create_product_form select').each(function(){
-              
                if($(this).attr('id') == 'product_image'){
                   var file =document.getElementById('product_image').files[0]; 
                    payload.append( 'image', file );
                }else{
                   var feild_val = $(this).val() ? $(this).val().trim() : '';
-                  payload.append( $(this).attr('name') , feild_val );
+                  if($(this).attr('name') != 'car_id' ||  ($(this).attr('name') == 'car_id' && $(this).val() != 0) ){
+                     payload.append( $(this).attr('name') , feild_val );
+                  }
                }
 
                if ($(this).attr('name') != 'car_id' && !$(this).val()){
@@ -255,28 +256,6 @@ function deleteProduct(){
 $(document).ready(function() {
    getProducts();
 });
-
-// $('#product_image').on('change',function(){
-//    if($(this).val()){
-//       getImageUrl()
-//    }
-// })
-function getImageUrl(){
-   var payload = new FormData();   
-   var file =document.getElementById('product_image').files[0]; 
-   payload.append( 'file', file );
-
-   $.ajax({
-   url: 'http://example.com/script.php',
-   data: payload,
-   processData: false,
-   contentType: false,
-   type: 'POST',
-   success: function(data){
-      alert(data);
-   }
-   });
-}
 </script>
 
 @endsection

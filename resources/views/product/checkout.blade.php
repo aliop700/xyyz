@@ -39,11 +39,11 @@
 			</div>
 			<div class="form-group">
 				<label>Location</label>
-				<input type="text" class="form-control" name="location" value="location data"/>
+				<input type="text" class="form-control" name="location" placeholder="Country - City - Street" value="{{auth()->check() ? (auth()->user()->country  .'-'. auth()->user()->city .'-'. auth()->user()->street) : ''}}"/>
 			</div>
 			<div class="form-group">
 				<label>Phone Number</label>
-				<input type="phone" class="form-control" name="phone_number" value="p data"/>
+				<input type="phone" class="form-control" name="phone_number" placeholder="example: +9627***" value="{{auth()->check() ? auth()->user()->phone  : ''}}"/>
 			</div>
 		</div>
 		<div class="paypal_container_box">
