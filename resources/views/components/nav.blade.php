@@ -19,6 +19,9 @@
 						<a class="dropdown-item" href="{{route('loginPage')}}"><i class="fa fa-sign-in nav-item-icon"></i> Login</a>
 						<a class="dropdown-item" href="{{route('regPage')}}"><i class="fa fa-pencil-square-o nav-item-icon"></i> Register</a>
 					@endif
+
+					<a href="/setLocale/{{App::getLocale() == 'en' ? 'en' : 'ar'  }}" class="dropdown-item"><i class="fa fa-langauge nav-item-icon"></i> {{App::getLocale() == 'en' ? 'English' : 'عربي'  }}</a>
+					
 				</div>
 				<form id="logout-form" action="{{route('logout')}}" method="post" style="display:none" >
 							<input type="submit">
