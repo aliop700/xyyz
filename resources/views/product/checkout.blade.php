@@ -32,18 +32,22 @@
 		<div class="delivery_method_box">
 			<div class="form-group">
 				<label>Delivery Method</label>
-				<select name="delivery_method" class="form-control" >
+				<select name="delivery_method" id="delivery_method_input" class="form-control" >
 					<option>DHL</option>
 					<option>Aramex</option>
 				</select>
 			</div>
 			<div class="form-group">
 				<label>Location</label>
-				<input type="text" class="form-control" name="location" placeholder="Country - City - Street" value="{{auth()->check() ? (auth()->user()->country  .'-'. auth()->user()->city .'-'. auth()->user()->street) : ''}}"/>
+				<input type="text" class="form-control" id="location_input" name="location" placeholder="Country - City - Street" value="{{auth()->check() ? (auth()->user()->country  .'-'. auth()->user()->city .'-'. auth()->user()->street) : ''}}"/>
 			</div>
 			<div class="form-group">
 				<label>Phone Number</label>
-				<input type="phone" class="form-control" name="phone_number" placeholder="example: +9627***" value="{{auth()->check() ? auth()->user()->phone  : ''}}"/>
+				<input type="phone" class="form-control" id="phone_input" name="phone_number" placeholder="example: +9627***" value="{{auth()->check() ? auth()->user()->phone  : ''}}"/>
+			</div>
+			<div class="form-group">
+				<label>Email</label>
+				<input type="phone" class="form-control" id="email_input" name="email_input" placeholder="example: test@test.com" value="{{auth()->check() ? auth()->user()->email  : ''}}"/>
 			</div>
 		</div>
 		<div class="paypal_container_box">
@@ -55,7 +59,7 @@
 	</div>
 	<div class="no-data-to-checkout hidden" style="text-align:center;">
 	<i class="fa fa-frown-o danger" aria-hidden="true" style="font-size: 20vh; margin-bottom:20px;"></i>
-		<h2>You have not selected any product</h2>
+		<h2>You did not select any product</h2>
 	</div>
 
     <!-- Include the PayPal JavaScript SDK -->
@@ -77,7 +81,10 @@
 		})
 		var payload ={
 			products: products,
-			delievery_method:$('#delivery_method_input').val()
+			delievery_method:$('#delivery_method_input').val(),
+			phone:$('#phone_input').val(),
+			location:$('#location_input').val(),
+			email:$('#email_input').val(),
 		}
 
 		$.ajax({
@@ -86,10 +93,10 @@
 			   data: payload,
                success: function(res) 
                   {
-                    alert('success')
+                    // alert('success')
                   },
                   error: function(){
-                     alert('failure to save');
+					 swal("Oops!", "Something wrong, contact with us at info@autorepairskit.com", "error");
                   }
                });
 	}

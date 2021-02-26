@@ -70,6 +70,7 @@
     var product_name ='{{$product->name}}';
     var product_price ='{{$product->price}}';
     var quantity_val = $('#quantity').val();
+    var product_added = [];
     var product= {product_id: product_id , quantity : quantity_val, product_name: product_name , product_price:product_price };
     var basket_count= 1;
     var basket_items= localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')) : null ;
@@ -77,7 +78,7 @@
       localStorage.setItem('basket', JSON.stringify ([product]) )
     }else{
       var product_added_index;
-      var product_added = basket_items.filter(function(item ,index){
+        product_added = basket_items.filter(function(item ,index){
         if(item.product_id == product_id){
           product_added_index = index;
            return item;
@@ -93,6 +94,8 @@
       localStorage.setItem('basket',JSON.stringify (basket_items));
     }
     swal("Successfully", {
+            title: 'Successfully',
+            text: product_added.length ? 'You have successfully increased the quantity' :'You have successfully added the product',
 						icon:'success',
 						buttons: {
 							cancel: false,

@@ -69,7 +69,7 @@
 <!-- end modal -->
 </div>
       <div class="main-content-admin container">
-         <table id="cars" class="table table-striped table-bordered" style="width:100%">
+         <table id="cars" class="table table-striped table-bordered dt-responsive" style="width:100%">
             <thead>
                <tr>
                   <th>Id</th>
@@ -131,11 +131,19 @@ function getCars(){
                   )
                })
             }
-            $('#cars').DataTable();
+            $('#cars').DataTable({
+               "initComplete": function(settings, json) {
+                  $('table#cars').parent().addClass('dataTableFirstWrapper')
+               }
+            });
 
          },
 			error: function(){
-           $('#cars').DataTable();
+           $('#cars').DataTable({
+               "initComplete": function(settings, json) {
+                  $('table#cars').parent().addClass('dataTableFirstWrapper')
+               }
+            });
             alert('failure');
          }
     	});

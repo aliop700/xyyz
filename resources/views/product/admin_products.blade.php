@@ -102,7 +102,7 @@
 <!-- end modal -->
 </div>
       <div class="main-content-admin container">
-         <table id="products" class="table table-striped table-bordered" style="width:100%">
+         <table id="products" class="table table-striped table-bordered nowrap" >
             <thead>
                <tr>
                   <th>Id</th>
@@ -191,16 +191,24 @@
                               '<td>'+product.name+'</td>'+
                               '<td>'+product.desc+'</td>'+
                               '<td>'+product.price+'</td>'+
-                              '<td>'+product.car_name+'</td>'+
+                              '<td>'+product.car.car_name+'</td>'+
                               '<td> <i class="fa fa-trash btn danger" onclick="deleteProduct('+product.id+')" tooltip-title="Delete" title="Delete"></i></td>'+
                            '</tr>'
                         )
                      })
-                     $('#products').DataTable();
+                     $('#products').DataTable({
+                        "initComplete": function(settings, json) {
+                           $('table#products').parent().addClass('dataTableFirstWrapper')
+                        }
+                     });
 
                   },
                   error: function(){
-                  $('#products').DataTable();
+                  $('#products').DataTable({
+                     "initComplete": function(settings, json) {
+                           $('table#products').parent().addClass('dataTableFirstWrapper')
+                      }
+                  });
                      alert('failure');
                   }
                });
@@ -257,5 +265,4 @@ $(document).ready(function() {
    getProducts();
 });
 </script>
-
 @endsection

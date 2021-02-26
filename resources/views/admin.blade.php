@@ -48,7 +48,7 @@
 
 </div>
       <div class="main-content-admin container">
-       <table id="orders" class="table table-striped table-bordered" style="width:100%">
+       <table id="orders" class="table table-striped table-bordered dt-responsive" style="width:100%">
             <thead>
                <tr>
                   <th>Id</th>
@@ -87,11 +87,19 @@
                            '</tr>'
                         )
                      })
-                     $('#orders').DataTable();
+                     $('#orders').DataTable({
+                        "initComplete": function(settings, json) {
+                           $('table#orders').parent().addClass('dataTableFirstWrapper')
+                        }
+                     });
 
                   },
                   error: function(){
-                  $('#orders').DataTable();
+                  $('#orders').DataTable({
+                        "initComplete": function(settings, json) {
+                           $('table#orders').parent().addClass('dataTableFirstWrapper')
+                        }
+                     });
                      alert('failure');
                   }
                });

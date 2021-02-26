@@ -4310,9 +4310,12 @@ input[disabled] , button[disabled] a[disabled]{
     left: 0;
     z-index: 111;
 	top: 100%;
+	visibility: hidden;
+	transition: ease-in-out .3s;
 }
 .checkout-container.show{
 	top: unset;
+	visibility: visible;
 }
 .checkout-container .basket-info{
 	color:#fff;
@@ -4424,6 +4427,11 @@ nav .dropdown-menu:before{
     color: #fff;
     top: -18px;
     left: 6px;
+}
+
+.dataTableFirstWrapper{
+	width: 100%;
+    overflow-x: auto;
 }
  /* nav { grid-area: header; }
 .main-content { grid-area: main; }
