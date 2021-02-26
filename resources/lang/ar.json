@@ -14,5 +14,10 @@
     "confirm password not matching with password":"تأكيد كلمة المرور غير متطابقة مع كلمة المرور",
     "Name":"الاسم",
     "Basket":"السلة",
-    "items":"العناصر"
+    "items":"العناصر",
+    "You Have":"لديك",
+    "items in your basket":"عناصر في سلتك",
+    "Checkout Now":"ادفع الان",
+    "Message":"رسالة",
+    "FOLLOW US":"تابعنا"
 }

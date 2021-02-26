@@ -85,6 +85,10 @@
                               '<td>'+order.id+'</td>'+
                               '<th> Product Name</th>'+
                               '<td>'+order.total+'</td>'+
+                              '<th>User Name</th>'+
+                              '<th>Phone Number</th>'+
+                             '<th>Email</th>'+
+                              '<th>Location</th>'+
                               '<td>'+order.delievery_method+'</td>'+
                               '<td>'+order.status+'</td>'+
                            '</tr>'

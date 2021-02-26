@@ -1,9 +1,9 @@
 <div class="checkout-container">
 	<div class="container">
 		<div class="basket-info">
-			<h1>You Have <span class="basket-count flusher-checkout">3</span> items in your basket</h1>
+			<h1>{{ __('You Have')}} <span class="basket-count flusher-checkout">3</span> {{ __('items in your basket')}}</h1>
 		</div>
-		<a  href="{{route('checkout')}}" class="btn btn-primary btn-lg checkout-btn">Checkout Now</a>
+		<a  href="{{route('checkout')}}" class="btn btn-primary btn-lg checkout-btn">{{ __('Checkout Now')}}</a>
 	</div>
 </div>
 
@@ -23,15 +23,15 @@
 	 <div class="col-md-6 ftr-left">
 		 <div class="ftr-list">
 			 <ul>
-				 <li><a href="{{route('home')}}">Home</a></li>
-				 <li><a href="{{route('loginPage')}}">Login</a></li>
-				 <li><a href="{{route('regPage')}}">Register</a></li>
+				 <li><a href="{{route('home')}}">{{ __('Home')}}</a></li>
+				 <li><a href="{{route('loginPage')}}">{{ __('Login')}}</a></li>
+				 <li><a href="{{route('regPage')}}">{{ __('Register')}}</a></li>
 				 
 			 </ul>
 		 </div>
 	
 		 <div class="clearfix"></div>
-		 <h4>FOLLOW US</h4>
+		 <h4>{{ __('FOLLOW US')}}</h4>
 		 <div class="social-icons">
 		 <a href="#"><span class="in"> </span></a>
 		 <a href="#"><span class="you"> </span></a>

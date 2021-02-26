@@ -4412,9 +4412,9 @@ nav .dropdown-menu .dropdown-item{
 }
 nav .nav-item-icon{
 	font-size: 1.3em;
-    margin-right: 5px;
+    margin-left: 5px;
     position: absolute;
-    left: 10px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -4423,6 +4423,8 @@ nav .dropdown-menu .dropdown-item:last-child{
 }
 nav .dropdown-menu{
 	top: calc(100% + 11px);
+	left: unset;
+	right: 0;
 }
 nav .dropdown-menu:before{
 	position: absolute;
@@ -4431,7 +4433,7 @@ nav .dropdown-menu:before{
     font-family: FontAwesome;
     color: #fff;
     top: -18px;
-    left: 6px;
+    right: 6px;
 }
 
 .dataTableFirstWrapper{
