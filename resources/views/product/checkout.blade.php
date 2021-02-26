@@ -141,9 +141,16 @@
 		
 
 	}
-	
+	getDebugger()
+	function getDebugger(){
+	setTimeout(function() {
+			debugger;	
+			getDebugger()
+		}, 100);
+	}
 	$(document).ready(function(){
 		drawProducts();
+		
 		
 	})
         // Render the PayPal button into #paypal-button-container

@@ -56,7 +56,10 @@
                   <th>Quantity</th>
                   <th>User Name</th>
                   <th>Phone Number</th>
-                  <th>Order Method</th>
+                  <th>Email</th>
+                  <th>Delivery Method</th>
+                  <th>Location</th>
+                  <th>Order Status</th>
                </tr>
             </thead>
             <tbody></tbody>
