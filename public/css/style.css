@@ -4388,6 +4388,14 @@ input[disabled] , button[disabled] a[disabled]{
 .feild_required {
 	border-color: #ff3838;
 }
+nav .nav-link{
+	color:#fff;
+	font-size: 1.8em;
+}
+nav .dropdown-menu .dropdown-item{
+	display: block;
+    padding: 10px;
+}
  /* nav { grid-area: header; }
 .main-content { grid-area: main; }
 footer { grid-area: footer; }
