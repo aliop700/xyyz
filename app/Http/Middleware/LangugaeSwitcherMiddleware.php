@@ -19,7 +19,7 @@ class LangugaeSwitcherMiddleware
     {
         if (!Session::has('locale'))
         {
-            Session::put('locale',Config::get('app.locale'));
+            Session::put('locale',config('app.locale'));
         }
 
         App::setLocale(session('locale'));
