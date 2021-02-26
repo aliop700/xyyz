@@ -53,15 +53,19 @@ class ProductController extends Controller
             'price' => 'required',
             'desc' => 'required',
             'desc_ar' => 'required',
-            // 'car_id' => 'exists:cars,id'
+            'car_id' => 'exists:cars,id'
         ]);
 
         if($validator->fails()) {
             return response()->fail($validator->errors(), 422);
         }
 
-        $data = request()->only('name','name_ar','price','car_id','desc','desc_ar');
+        $data = request()->only('name','name_ar','price','desc','desc_ar');
 
+        $data['car_id'] = 0;
+        if($request->has('car_id'))
+            $data['car_id'] = $request->car_id;
+        
         if($request->has('image')) {
             
             $file = (new UploadFileAction)($request->file('image'));
@@ -70,7 +74,7 @@ class ProductController extends Controller
         
 
         $product = Product::create($data);
-        
+
         return response()->success($product, 201);
 
 

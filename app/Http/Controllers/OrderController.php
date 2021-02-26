@@ -7,6 +7,7 @@ use App\Product;
 use App\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Events\OrderMade;
 
 class OrderController extends Controller
 {
@@ -42,7 +43,10 @@ class OrderController extends Controller
             'products' => 'array|required',
             'products.*.product_id' => 'required|exists:products,id',
             'products.*.quantity' => 'required',
-            'delievery_method' => 'required'
+            'delievery_method' => 'required',
+            'phone'  =>  'required',
+            'email'  =>  'email|required',
+            'location'  =>  'required',
         ]);
 
         if($validator->fails()) {
@@ -60,6 +64,9 @@ class OrderController extends Controller
         $order->total = 0.0;
         $order->user_id = auth()->user()->id;
         $order->delievery_method = $request->delievery_method;
+        $order->phone = $request->phone;
+        $order->email = $request->email;
+        $order->location = $request->delievery_method;
         $order->status = 'pending';
 
         $order->save();
@@ -76,7 +83,8 @@ class OrderController extends Controller
         }
 
         $order->reCalculateTotal();
-
+        
+        event(new OrderMade($order, auth()->user()));
         return response()->success($order);
 
 
