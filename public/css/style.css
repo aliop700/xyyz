@@ -4395,6 +4395,14 @@ nav .nav-link{
 nav .dropdown-menu .dropdown-item{
 	display: block;
     padding: 10px;
+	border-bottom: 1px solid #ddd;
+}
+nav .nav-item-icon{
+	font-size: 16px;
+    margin-right: 5px;
+}
+nav .dropdown-menu .dropdown-item:last-child{
+	border-bottom: 0;	
 }
  /* nav { grid-area: header; }
 .main-content { grid-area: main; }

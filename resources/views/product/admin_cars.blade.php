@@ -142,7 +142,7 @@ function getCars(){
        
 }
 
-function deleteCar(){
+function deleteCar(id){
    swal("", {
             icon:'warning',
             title:'Are you sure you wante to delete this car!',
@@ -157,8 +157,8 @@ function deleteCar(){
    .then(function(value) {
       if(value == true){
          $.ajax({
-         type: "delete",
-         url: '/cars',
+         method: "delete",
+         url: '/cars/'+id,
          success: function(res) 
             {
                getCars();

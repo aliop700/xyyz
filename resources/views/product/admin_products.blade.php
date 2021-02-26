@@ -226,7 +226,7 @@ function getCars(){
     	});
 }
 
-function deleteProduct(){
+function deleteProduct(id){
    swal("", {
             icon:'warning',
             title:'Are you sure you wante to delete this product!',
@@ -241,8 +241,8 @@ function deleteProduct(){
    .then(function(value) {
       if(value == true){
          $.ajax({
-         type: "delete",
-         url: '/products',
+         method: "delete",
+         url: '/products/'+id,
          success: function(res) 
             {
                getProducts('after_add');
