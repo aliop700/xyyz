@@ -75,7 +75,7 @@
 <script>
 	var products_in_basket = localStorage.getItem('basket') != null ? JSON.parse(localStorage.getItem('basket')) : [];
 
-	function addOrder(){
+	function addOrder(paypalResp){
 		var products = products_in_basket.map(function(item){
 			return {product_id: item.product_id , quantity : item.quantity}
 		})
@@ -85,6 +85,7 @@
 			phone:$('#phone_input').val(),
 			location:$('#location_input').val(),
 			email:$('#email_input').val(),
+			paypal_response: paypalResp
 		}
 
 		$.ajax({
@@ -172,7 +173,8 @@
 			onApprove: function(data,actions){
 				return actions.order.capture().then(function(details){
 					// window.location.replace('success_checkout.html')
-					addOrder();
+					var paypalRes = JSON.stringify(details);
+					addOrder(paypalRes);
 					cleanBasket();
 					swal("Successfully", {
 						icon:'success',
