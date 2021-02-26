@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Index')
+@section('title', __('Home'))
 @section('content')
 <div class="header">
 	<div class="caption">

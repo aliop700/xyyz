@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 body{
-	/* font-family: 'Arimo', sans-serif; */
 	font-family: 'Open Sans', sans-serif;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Tajawal', sans-serif;
 	background: #ffffff;
 	margin:0;
 	padding-right: 0  !important;
 	padding-left: 0  !important;
-	
+    direction: rtl;
+	font-weight: 500;
 }
 body a{
 	transition:0.5s all;
@@ -123,7 +124,7 @@ i.arrow{
   margin-bottom: 0; 
 }
 .box_1 img{
-	margin-left:12px;
+	margin-right:12px;
 }
 .box_1 a:hover, a:focus{
 	 text-decoration:none;
@@ -496,7 +497,7 @@ i.boque{
 	background-attachment: fixed;
 }
 .ftr-list{
-	float:left;
+	float:right;
 	width:50%;
 }
 .ftr-list2{
@@ -563,7 +564,7 @@ i.boque{
 }
 .contact {
 	text-align: center;
-	float: right;
+	float: left;
 }
 .contact form{
 	width: 100%;
@@ -3068,7 +3069,7 @@ p.click {
   width: 18.5%;
 } */
 .box_1 img {
-  margin-left: 9px;
+  margin-right: 9px;
   width: 17px;
 }
 .box_1 h3 {
@@ -3896,8 +3897,8 @@ transition: 0.5s all;
 
 .product-detail-top .product-detail h1 span {
     color: #656565;
-    text-align: right;
-    float: right;
+    text-align: left;
+    float: left;
 }
 .product-detail-top .product-detail p {
     color: #5d6266;
@@ -3910,6 +3911,7 @@ transition: 0.5s all;
 
 .product-options {
     clear: both;
+    float: right;
 }
 .product-detail-top .product-detail .title {
     color: #656565;
@@ -4185,7 +4187,7 @@ margin: 0;
 }
 
 .subnavbar .container > ul > li {
-float: left;
+float: right;
 
 min-width: 90px;
 height: 60px;
@@ -4442,4 +4444,15 @@ footer { grid-area: footer; }
 
 body {
 	grid-template-areas:'header main footer';
+} */
+
+
+th {
+    text-align: right;
+}
+
+/* @media (min-width: 992px){
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: right;
+}
 } */

@@ -10,14 +10,14 @@
 				</a>
 				
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{{auth()->user() &&  auth()->user()->isAdmin() ? route('admin') : route('home')}}"><i class="fa fa-home nav-item-icon"></i> Home</a>
+						<a class="dropdown-item" href="{{auth()->user() &&  auth()->user()->isAdmin() ? route('admin') : route('home')}}"><i class="fa fa-home nav-item-icon"></i> {{ __('Home') }}</a>
 
 					@if(auth()->check())
-						<a href="#" class="dropdown-item" onclick="document.getElementById('logout-form').submit()"><i class="fa fa-sign-out nav-item-icon"></i> Logout</a>
+						<a href="#" class="dropdown-item" onclick="document.getElementById('logout-form').submit()"><i class="fa fa-sign-out nav-item-icon"></i> {{ __('Logout') }}</a>
 						
 					@else
-						<a class="dropdown-item" href="{{route('loginPage')}}"><i class="fa fa-sign-in nav-item-icon"></i> Login</a>
-						<a class="dropdown-item" href="{{route('regPage')}}"><i class="fa fa-pencil-square-o nav-item-icon"></i> Register</a>
+						<a class="dropdown-item" href="{{route('loginPage')}}"><i class="fa fa-sign-in nav-item-icon"></i> {{ __('Login') }}</a>
+						<a class="dropdown-item" href="{{route('regPage')}}"><i class="fa fa-pencil-square-o nav-item-icon"></i> {{ __('Register') }}</a>
 					@endif
 
 					<a href="/setlocale/{{App::getLocale() == 'en' ? 'ar' : 'en'  }}" class="dropdown-item"><i class="fa fa-language nav-item-icon"></i> {{App::getLocale() == 'en' ? 'عربي'  : 'English'}}</a>
@@ -33,7 +33,7 @@
 		  
 			 <div class="box_1">	
 			 @if(!auth()->user() || (auth()->user() &&  !auth()->user()->isAdmin()))
-				 <a href="{{route('checkout')}}"><h3>Basket:  (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)<img class="basket_icon_nav" src="/images/cart.png" alt=""/></h3></a>
+				 <a href="{{route('checkout')}}"><h3>{{ __('Basket')}}:  (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> {{ __('items')}})<img class="basket_icon_nav" src="/images/cart.png" alt=""/></h3></a>
 
 			@endif
 			 </div>			 

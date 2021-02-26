@@ -1,3 +1,18 @@
 {
-    "ali": "  علي"
+    "ali": "  علي",
+    "Home":"الصفحة الرئيسية",
+    "Logout":"تسجيل خروج",
+    "Login":"تسجيل دخول",
+    "Register":"مستخدم جديد",
+    "Password":"كلمة المرور",
+    "Email":"البريد الالكتروني",
+    "Country":"الدولة",
+    "City":"المدينة",
+    "Street":"الشارع",
+    "Mobile Number":"رقم الهاتف",
+    "Confirm Password":"تأكيد كلمة المرور",
+    "confirm password not matching with password":"تأكيد كلمة المرور غير متطابقة مع كلمة المرور",
+    "Name":"الاسم",
+    "Basket":"السلة",
+    "items":"العناصر"
 }
