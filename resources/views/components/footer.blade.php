@@ -24,8 +24,8 @@
 		 <div class="ftr-list">
 			 <ul>
 				 <li><a href="{{route('home')}}">Home</a></li>
-				 <li><a href="about.html">About</a></li>
 				 <li><a href="{{route('loginPage')}}">Login</a></li>
+				 <li><a href="{{route('regPage')}}">Register</a></li>
 				 
 			 </ul>
 		 </div>

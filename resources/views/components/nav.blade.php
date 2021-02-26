@@ -17,7 +17,7 @@
 						
 					@else
 						<a class="dropdown-item" href="{{route('loginPage')}}"><i class="fa fa-sign-in nav-item-icon"></i> Login</a>
-						<a class="dropdown-item" href="{{route('regPage')}}"><i class="fa fa-unlock nav-item-icon"></i> Register</a>
+						<a class="dropdown-item" href="{{route('regPage')}}"><i class="fa fa-pencil-square-o nav-item-icon"></i> Register</a>
 					@endif
 				</div>
 				<form id="logout-form" action="{{route('logout')}}" method="post" style="display:none" >

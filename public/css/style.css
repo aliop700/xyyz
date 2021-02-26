@@ -4396,13 +4396,30 @@ nav .dropdown-menu .dropdown-item{
 	display: block;
     padding: 10px;
 	border-bottom: 1px solid #ddd;
+	position: relative;
 }
 nav .nav-item-icon{
-	font-size: 16px;
+	font-size: 1.3em;
     margin-right: 5px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 nav .dropdown-menu .dropdown-item:last-child{
 	border-bottom: 0;	
+}
+nav .dropdown-menu{
+	top: calc(100% + 11px);
+}
+nav .dropdown-menu:before{
+	position: absolute;
+    font-size: 21px;
+    content: '\f0d8';
+    font-family: FontAwesome;
+    color: #fff;
+    top: -18px;
+    left: 6px;
 }
  /* nav { grid-area: header; }
 .main-content { grid-area: main; }
