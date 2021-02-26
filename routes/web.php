@@ -23,6 +23,12 @@ Route::middleware(['auth.custom', 'admin.custom'])->group(function() {
 
 });
 
+Route::get('setlocale/{locale}',function($lang){
+    $lang = $lang == 'en' ? 'en' : 'ar';
+    \Session::put('locale',$lang);
+    return redirect()->back();   
+});
+
 Route::post('/orders','OrderController@store');
 Route::get('/orders','OrderController@index');
 Route::get('/cars','CarsController@index');
