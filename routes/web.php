@@ -16,11 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/email', function() {
- $order = \App\Order::find(1);
- $user = \App\User::find(2);
- return new \App\Mail\OrderMadeMail($order, $user);
-});
+
 Route::middleware(['auth.custom', 'admin.custom'])->group(function() {
     Route::resource('cars', 'CarsController')->except(['index', 'show']);
     Route::resource('products', 'ProductController')->except(['index', 'show']);
