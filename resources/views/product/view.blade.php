@@ -18,19 +18,19 @@
       <div class="col-md-5 row product-detail">
 <!-- ============================= Product name and price -->      
         <div class="col-md-12">
-          <h1>{{$product->name}}
+          <h1> {{App::getLocale() == "en" ? $product->name : $product->name_ar}}
          	 <span> {{$product->price}}$ </span>
           </h1>
           <h2>{{$product->car_name}}</h2>
           <hr>
-          <p></p><p>{{$product->desc}}.</p><p></p>
+          <p></p><p>{{App::getLocale() == "en" ? $product->desc : $product->desc_ar}}.</p><p></p>
         </div>
 <!-- ============================= Product Quantity -->
  
         
       <div class="attribute-group">   
               <div class="product-options col-md-6">
-      <p class="title" for="quantity">QUANTITY</p>
+      <p class="title" for="quantity">{{ __('QUANTITY') }}</p>
       <span>
          <input name="quantity" class="form-control" id="quantity" type="number" onkeyup="if(this.value<1){this.value= this.value * -1}" min="1" value="1"/>
       </span>
@@ -45,17 +45,12 @@
       </div>
       @if(!auth()->user() || (auth()->user() &&  !auth()->user()->isAdmin()))
         <div class="col-md-12 attribute-group">
-          <a  class="item_add add_item_to_basket" onclick="addItemToBasket()" > Add To Basket
+          <a  class="item_add add_item_to_basket" onclick="addItemToBasket()" > {{ __('Add To Basket') }}
             </a>
         </div>
         @endif
 
-     
-      
-        <div class="to-cart-flash col-md-12">
-          <p class="custome-msg" style="font-size:0;visibility:hidden;"> successful add </p>
           
-        </div>   
       </div>
    </div>
 </div>
@@ -67,7 +62,7 @@
 <script>
   function addItemToBasket(){
     var product_id ='{{$product->id}}';
-    var product_name ='{{$product->name}}';
+    var product_name ='{{App::getLocale() == "en" ? $product->name : $product->name_ar}}';
     var product_price ='{{$product->price}}';
     var quantity_val = $('#quantity').val();
     var product_added = [];
@@ -93,14 +88,14 @@
       basket_count = basket_items.length;
       localStorage.setItem('basket',JSON.stringify (basket_items));
     }
-    swal("Successfully", {
-            title: 'Successfully',
-            text: product_added.length ? 'You have successfully increased the quantity' :'You have successfully added the product',
+    swal("{{ __('Successfully') }}", {
+            title: '{{__("Successfully") }}',
+            text: product_added.length ? '{{__("You have successfully increased the quantity") }}' : '{{__("You have successfully added the product") }}',
 						icon:'success',
 						buttons: {
 							cancel: false,
 							catch: {
-							text: "Ok",
+							text: "{{ __('Ok') }}",
 							value: true,
 							},
 						},

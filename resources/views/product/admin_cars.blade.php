@@ -13,19 +13,19 @@
          <li>
             <a href="{{route('admin')}}">
                <i class="fa fa-shopping-cart"></i>
-               <span>Orders</span>
+               <span>{{ __('Orders')}}</span>
             </a>    				
          </li>
          <li>
             <a href="{{route('admin_products')}}">
                <i class="fa fa-microchip"></i>
-               <span>Products</span>
+               <span>{{ __('Products')}}</span>
             </a>    				
          </li>  
          <li class="active">
             <a href="{{route('admin_cars')}}">
                <i class="fa fa-car"></i>
-               <span>Cars</span>
+               <span>{{ __('Cars')}}</span>
             </a>    				
          </li>  
       </ul>
@@ -34,7 +34,7 @@
 
 <div class="container">
     <div class="actions-btn">
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_car_modal">Add Car</button>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_car_modal">{{ __('Add Car')}}</button>
     </div>
 </div>
 
@@ -47,19 +47,19 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add Car</h4>
+          <h4 class="modal-title">{{ __('Add Car')}}</h4>
         </div>
         <div class="modal-body">
         <form id="add_car_form">
             <div class="form-group">
-                <label class="label-control">Car Name: </label>
+                <label class="label-control">{{ __('Car Name')}}: </label>
                 <input type="text" class="form-control" required name="name" >
             </div>
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" disabled ="true" class="btn btn-primary" onclick="addCar()" id="add_car_submit">Add</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" disabled ="true" class="btn btn-primary" onclick="addCar()" id="add_car_submit">{{ __('Add')}}</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Close')}}</button>
         </div>
       </div>
       
@@ -73,8 +73,8 @@
             <thead>
                <tr>
                   <th>Id</th>
-                  <th>Car Name</th>
-                  <th>Delete</th>
+                  <th>{{ __('Car Name')}}</th>
+                  <th>{{ __('Remove')}}</th>
                </tr>
             </thead>
             <tbody></tbody>
@@ -97,7 +97,7 @@ $('#add_car_form input[name="name"]').on('keyup',function(){
    }
 });
 
-function addCar(){
+function addCar(firstLoad){
    var carName= $('#add_car_form input[name="name"]').val().trim();
    $.ajax({
       type: "POST",
@@ -112,7 +112,7 @@ function addCar(){
 			error: function(){alert('failure');}
     	});
 }
-function getCars(){
+function getCars(firstLoad){
    // cars
    $.ajax({
       type: "get",
@@ -131,11 +131,17 @@ function getCars(){
                   )
                })
             }
-            $('#cars').DataTable({
-               "initComplete": function(settings, json) {
-                  $('table#cars').parent().addClass('dataTableFirstWrapper')
-               }
-            });
+            if ( $.fn.dataTable.isDataTable( '#cars' ) ) {
+               cars_table = $('#cars').DataTable();
+            }
+            else {
+               cars_table = $('#cars').DataTable({
+                  "initComplete": function(settings, json) {
+                     $('table#cars').parent().addClass('dataTableFirstWrapper')
+                  }
+               });
+            }
+        
 
          },
 			error: function(){
@@ -178,7 +184,7 @@ function deleteCar(id){
 }
 
 $(document).ready(function() {
-   getCars();
+   getCars(true);
 });
   
 </script>

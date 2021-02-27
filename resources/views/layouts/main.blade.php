@@ -33,6 +33,9 @@
         <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
         <meta name="theme-color" content="#0d9feb">
     </head>
+    <script>
+      let lang ="{{App::getLocale()}}"
+    </script>
     <body>
       <nav> @include('components.nav')</nav>
       <section class="main-content"> @yield('content')</section>

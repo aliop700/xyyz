@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Checkout')
+@section('title', __('Checkout'))
 @section('content')
 
 <style>
@@ -21,9 +21,9 @@
 		<div class="products-list"> 
 			<table class="table table-striped table-bordered products-list-table">
 				<thead>
-					<th>Product Name</th>
-					<th>Price</th>
-					<th>quantity</th>
+					<th>{{ __('Product Name')}}</th>
+					<th>{{ __('Price')}}</th>
+					<th>{{ __('Quantity')}}</th>
 					<th></th>
 				</thead>
 				<tbody></tbody>
@@ -31,22 +31,22 @@
 		</div>
 		<div class="delivery_method_box">
 			<div class="form-group">
-				<label>Delivery Method</label>
+				<label>{{ __('Delivery Method') }}</label>
 				<select name="delivery_method" id="delivery_method_input" class="form-control" >
 					<option>DHL</option>
 					<option>Aramex</option>
 				</select>
 			</div>
 			<div class="form-group">
-				<label>Location</label>
-				<input type="text" class="form-control" id="location_input" name="location" placeholder="Country - City - Street" value="{{auth()->check() ? (auth()->user()->country  .'-'. auth()->user()->city .'-'. auth()->user()->street) : ''}}"/>
+				<label>{{ __('Location') }}</label>
+				<input type="text" class="form-control" id="location_input" name="location" placeholder="{{ __('Country')}} - {{ __('City')}} - {{ __('Street')}}" value="{{auth()->check() ? (auth()->user()->country  .'-'. auth()->user()->city .'-'. auth()->user()->street) : ''}}"/>
 			</div>
 			<div class="form-group">
-				<label>Phone Number</label>
+				<label>{{ __('Mobile Number') }}</label>
 				<input type="phone" class="form-control" id="phone_input" name="phone_number" placeholder="example: +9627***" value="{{auth()->check() ? auth()->user()->phone  : ''}}"/>
 			</div>
 			<div class="form-group">
-				<label>Email</label>
+				<label>{{ __('Email') }}</label>
 				<input type="phone" class="form-control" id="email_input" name="email_input" placeholder="example: test@test.com" value="{{auth()->check() ? auth()->user()->email  : ''}}"/>
 			</div>
 		</div>
@@ -97,7 +97,18 @@
                     // alert('success')
                   },
                   error: function(){
-					 swal("Oops!", "Something wrong, contact with us at info@autorepairskit.com", "error");
+					swal({
+						title: "{{ __('Oops!') }}", 
+						text: "{{ __('Something wrong, contact with us at info@autorepairskit.com')}}",
+						buttons: {
+									cancel: false,
+									catch: {
+									text: "{{ __ ('Ok')}}",
+									value: true,
+									},
+						},
+						icon: "error"
+					});
                   }
                });
 	}
@@ -129,7 +140,7 @@
 					'<td>'+item.product_name+'</td>'+
 					'<td>'+item.product_price+'</td>'+
 					'<td>'+item.quantity+'</td>'+
-					'<td><button onclick="removeProduct('+item.product_id+')" class="danger btn">Remove &nbsp;<i class="fa fa-remove danger"></i> </button></td>'
+					'<td><button onclick="removeProduct('+item.product_id+')" class="danger btn">{{ __("Remove") }} &nbsp;<i class="fa fa-remove danger"></i> </button></td>'
 				)
 			})
 		}else{
@@ -183,13 +194,13 @@
 					var paypalRes = JSON.stringify(details);
 					addOrder(paypalRes);
 					cleanBasket();
-					swal("Successfully", {
+					swal("{{ __('Successfully') }}", {
 						icon:'success',
-						text: "You will receive an email with the details",
+						text: "{{ __('You will receive an email with the details') }}",
 						buttons: {
 							cancel: false,
 							catch: {
-							text: "Ok",
+							text: "{{ __ ('Ok')}}",
 							value: true,
 							},
 						},
@@ -201,7 +212,18 @@
 				})
 			},
 			onCancel: function(data){
-				swal("Oops!", "Something wrong, Please try again", "error");
+				swal({
+					title: "{{ __('Oops!') }}", 
+					text: "{{ __('Something wrong, Please try again') }}",
+					buttons: {
+								cancel: false,
+								catch: {
+								text: "{{ __ ('Ok')}}",
+								value: true,
+								},
+					},
+					icon: "error"
+				});
 			},
 
         }).render('#paypal-button-container');
@@ -210,16 +232,16 @@
 			// swal("Oops!", "Something wrong, Please try again", "error");
 			swal("Info", {
 						icon:'warning',
-						title:'You are not logged in!',
-						text: "If you do not have an account, create an account in one minute!",
+						title:'{{ __("You are not logged in")}}!',
+						text: "{{ __('If you do not have an account, create an account in one minute')}}!",
 						buttons: {
 							cancel: false,
 							catch: {
-								text: "Login",
+								text: "{{ __('Login')}}",
 								value: 'login',
 							},
 							defeat:  {
-								text: "Register",
+								text: "{{ __('Register')}}",
 								value: 'register',
 							},
 						},
@@ -232,6 +254,10 @@
 
 				}
 			});
+		}
+
+		window.oncontextmenu = (e) => {
+			e.preventDefault();
 		}
     </script>
 @endsection

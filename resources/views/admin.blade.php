@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Index')
+@section('title', __('Home'))
 @section('content')
 
 @if(!auth()->user() ||  !auth()->user()->isAdmin())
@@ -23,19 +23,19 @@
          <li class="active">
             <a href="{{route('admin')}}">
                <i class="fa fa-shopping-cart"></i>
-               <span>Orders</span>
+               <span>{{ __('Orders')}}</span>
             </a>    				
          </li>
          <li class="">
             <a href="{{route('admin_products')}}">
                <i class="fa fa-microchip"></i>
-               <span>Products</span>
+               <span>{{ __('Products')}}</span>
             </a>    				
          </li>
          <li>
             <a href="{{route('admin_cars')}}">
                <i class="fa fa-car"></i>
-               <span>Cars</span>
+               <span>{{ __('Cars')}}</span>
             </a>    				
          </li>  
          
@@ -52,14 +52,14 @@
             <thead>
                <tr>
                   <th>Id</th>
-                  <th>Product Name</th>
-                  <th>Quantity</th>
-                  <th>User Name</th>
-                  <th>Phone Number</th>
-                  <th>Email</th>
-                  <th>Delivery Method</th>
-                  <th>Location</th>
-                  <th>Order Status</th>
+                  <th>{{ __('Product Name') }}</th>
+                  <th>{{ __('Quantity') }}</th>
+                  <th>{{ __('User Name') }}</th>
+                  <th>{{ __('Mobile Number') }}</th>
+                  <th>{{ __('Email') }}</th>
+                  <th>{{ __('Delivery Method') }}</th>
+                  <th>{{ __('Location') }}</th>
+                  <th>{{ __('Order Status') }}</th>
                </tr>
             </thead>
             <tbody></tbody>

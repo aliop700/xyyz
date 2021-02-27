@@ -3,10 +3,6 @@
 @section('title', 'Index')
 @section('content')
 
-@php 
-  $lang =  'eng'; 
-@endphp 
-
 
 <!--header-->
 <div class="header2 text-center"></div>
@@ -20,19 +16,19 @@
          <li>
             <a href="{{route('admin')}}">
                <i class="fa fa-shopping-cart"></i>
-               <span>Orders</span>
+               <span>{{ __('Orders')}}</span>
             </a>    				
          </li>
          <li class="active">
             <a href="{{route('admin_products')}}">
                <i class="fa fa-microchip"></i>
-               <span>Products</span>
+               <span>{{ __('Products')}}</span>
             </a>    				
          </li>  
          <li>
             <a href="{{route('admin_cars')}}">
                <i class="fa fa-car"></i>
-               <span>Cars</span>
+               <span>{{ __('Cars')}}</span>
             </a>    				
          </li>  
       </ul>
@@ -40,7 +36,7 @@
 </div> <!-- /subnavbar-inner -->
 <div class="container">
     <div class="actions-btn">
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create_product_modal">Add Product</button>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create_product_modal">{{ __('Add Product') }}</button>
     </div>
 </div>
 
@@ -52,47 +48,47 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Create Product</h4>
+          <h4 class="modal-title">{{ __('Add Product') }}</h4>
         </div>
         <div class="modal-body">
         <form id="create_product_form">
             <div class="form-group">
-                <label class="label-control">Product Name: </label>
+                <label class="label-control">{{ __('Product Name')}}: </label>
                 <input type="text" class="form-control" required name="name" >
             </div>
         <div class="form-group">
-                <label class="label-control">Product Name Arabic: </label>
+                <label class="label-control">{{ __('Product Name Arabic')}}: </label>
                 <input type="text" class="form-control" required name="name_ar">
             </div>
             <div class="form-group">
-                <label class="label-control">Description: </label>
+                <label class="label-control">{{ __('Description')}}: </label>
                 <textarea  class="form-control" required name="desc" row="3"></textarea>
             </div>
             <div class="form-group">
-                <label class="label-control">Description Arabic: </label>
+                <label class="label-control">{{ __('Description Arabic')}}: </label>
                 <textarea  class="form-control" required name="desc_ar" row="3"></textarea>
             </div>
             <div class="form-group">
-                <label class="label-control">Price:</label>
+                <label class="label-control">{{ __('Price')}}:</label>
                 <input type="number" class="form-control" required name="price">
             </div>	
             <div class="form-group">
-                <label class="label-control">Product Image:</label>
+                <label class="label-control">{{ __('Product Image')}}:</label>
                 <!-- <input type="text"  class="form-control hidden" required name="image"> -->
                 <input type="file" id="product_image" accept="image/x-png,image/gif,image/jpeg" class="form-control" required name="image">
             </div>	
             <div class="form-group">
-                <label class="label-control">Type Of Car:</label>
+                <label class="label-control">{{ __('Type Of Car')}}:</label>
                 
                 <select class="form-control" name="car_id" required id="car_id">
-                    <option value="0">For All Cars</option>
+                    <option value="0">{{ __('For All Cars')}}</option>
                 </select>
             </div>	
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary"  id="create_product_submit" onclick="addProduct()">Add</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"  id="create_product_submit" onclick="addProduct()">{{ __('Add')}}</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Close')}}</button>
         </div>
       </div>
       
@@ -106,11 +102,11 @@
             <thead>
                <tr>
                   <th>Id</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th>Car</th>
-                  <th>Actions</th>
+                  <th>{{ __('Name')}}</th>
+                  <th>{{ __('Description')}}</th>
+                  <th>{{ __('Price')}}</th>
+                  <th>{{ __('Car')}}</th>
+                  <th>{{ __('Actions')}}</th>
                </tr>
             </thead>
             <tbody></tbody>
@@ -122,8 +118,6 @@
       <script src="/js/dataTables.bootstrap4.min.js"></script>
       <script src="/js/sweet-alert.min.js"></script>
       <script>
-
-         var lang='{{$lang}}';
 
          $('#add_car_form input[name="name"]').on('keyup',function(){
          var car_name = $(this).val().trim();
@@ -188,19 +182,25 @@
                         $('#products tbody').append(
                            '<tr>'+
                               '<td>'+product.id+'</td>'+
-                              '<td>'+product.name+'</td>'+
-                              '<td>'+product.desc+'</td>'+
+                              '<td>'+(lang == 'en' ? product.name : product.name_ar)+'</td>'+
+                              '<td>'+(lang == 'en' ? product.desc : product.desc_ar)+'</td>'+
                               '<td>'+product.price+'</td>'+
                               '<td>'+product.car.car_name+'</td>'+
                               '<td> <i class="fa fa-trash btn danger" onclick="deleteProduct('+product.id+')" tooltip-title="Delete" title="Delete"></i></td>'+
                            '</tr>'
                         )
                      })
-                     $('#products').DataTable({
+                    
+                     if ( $.fn.dataTable.isDataTable( '#products' ) ) {
+                        cars_table = $('#products').DataTable();
+                     }
+                     else {
+                        cars_table = $('#products').DataTable({
                         "initComplete": function(settings, json) {
                            $('table#products').parent().addClass('dataTableFirstWrapper')
                         }
                      });
+                     }
 
                   },
                   error: function(){
@@ -237,10 +237,10 @@ function getCars(){
 function deleteProduct(id){
    swal("", {
             icon:'warning',
-            title:'Are you sure you wante to delete this product!',
+            title:'{{ __("Are you sure you wante to delete this product!")}}',
             buttons: {
                catch: {
-                  text: "Delete",
+                  text: "{{ __('Remove')}}",
                   value: true,
                },
                cancel: true,
