@@ -12,7 +12,7 @@
 <div class="header2 text-center"></div>
 <!--header//-->
 
-
+<!-- {{ Request::get('returnurl') }} -->
 <div class="container-fluid" id="product-page">
 <div class="container product-detail-top">
    <div class="row">
@@ -59,7 +59,7 @@
 	</div>
 	<div class="no-data-to-checkout hidden" style="text-align:center;">
 	<i class="fa fa-frown-o danger" aria-hidden="true" style="font-size: 20vh; margin-bottom:20px;"></i>
-		<h2>You did not select any product</h2>
+		<h2>{{ __('You did not select any product')}}</h2>
 	</div>
 
     <!-- Include the PayPal JavaScript SDK -->
@@ -180,11 +180,25 @@
 				var amount_ = prices_arr.length ? prices_arr.reduce(function(total, amount) {
 					return total + amount;
 				}) : 0;
+				var items_ = products_in_basket.map(function(item){
+					return {
+						"name": item.product_name,
+						"unit_amount": {value :item.product_price ,currency_code: "USD"},
+						"id": item.product_id,
+						"price": item.product_price,
+						"currency": "USD",
+						"quantity": item.quantity
+					}
+				})
 				return actions.order.create({
 					purchase_units:[{
 						amount:{
+							breakdown: {
+								item_total: {value: amount_, currency_code: 'USD'}
+							},
 							value: amount_
-						}
+						},
+						items:items_
 					}]
 				})
 			},
