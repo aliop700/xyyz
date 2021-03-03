@@ -19,6 +19,11 @@ class ProductController extends Controller
     {
         return response()->success(Product::whereNotNUll('id')->with('car')->get(), 200);
     }
+    public function productDetails(Request $request, $id)
+    {
+        return response()->success(Product::whereNotNUll('id')->with('car')->get(), 200);
+    }
+   
 
     /**
      * Show the form for creating a new resource.
@@ -34,10 +39,10 @@ class ProductController extends Controller
         return view('product.view');
     }
     
-    public function checkout()
-    {
-        return view('product.checkout');
-    }
+    // public function checkout()
+    // {
+    //     return view('product.checkout');
+    // }
     /**
      * Store a newly created resource in storage.
      *

@@ -63,3 +63,11 @@ Route::get('/adminProducts',function(){
 Route::get('/adminCars',function(){
     return view('product.admin_cars');
 })->name('admin_cars');
+
+// Route::post('/payment', ['as' => 'payment', 'uses' => 'PaymentController@payWithpaypal']);
+// Route::get('/payment/status',['as' => 'status', 'uses' => 'PaymentController@getPaymentStatus']);
+
+// Route::get('checkout', array('as' => 'checkout','uses' => 'PaymentController@checkout',));
+Route::get('paywithpaypal', array('as' => 'paywithpaypal','uses' => 'PaymentController@payWithPaypal',));
+Route::post('paypal', array('as' => 'paypal','uses' => 'PaymentController@postPaymentWithpaypal',));
+Route::get('paypal', array('as' => 'status','uses' => 'PaymentController@getPaymentStatus',));

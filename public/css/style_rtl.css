@@ -58,6 +58,7 @@ ol.breadcrumb li.active{
 	align-items: center;
 	justify-content: space-between;
 	padding: 20px 0;
+	direction: ltr;
 }
 .navigation-strip{
 	background:#000000;
@@ -3118,9 +3119,7 @@ p.click {
 .main-header{
 	align-items: start;
 }
-.main-header .box_1{
-    width: 100%;
-    padding: 10px 29%;
+.main-header .box_1 .nav-checkout-btn{
 	display: none;
 }
 .box_1 p {
@@ -4367,7 +4366,7 @@ input[disabled] , button[disabled] a[disabled]{
 }
 nav .nav-link{
 	color:#fff;
-	font-size: 1.8em;
+	font-size: 2.5em;
 }
 nav .dropdown-menu .dropdown-item{
 	display: block;
@@ -4437,3 +4436,29 @@ th {
 	90% { transform: translate(1px, 2px) rotate(0deg); }
 	100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
+
+  #pay_with_paypal_button{
+	width: 100%;
+	max-width: 750px;
+	display: block;
+	margin: 10px auto;
+	border-radius: 25px;
+	background: #0d9feb;
+	transition: ease-in-out .5s;
+	border:0 !important;
+	outline:0 !important;
+}
+#pay_with_paypal_button:hover{
+	opacity: .95;
+	box-shadow:  0 10px 10px -2px rgba(0, 0, 0, 0.2);
+}
+
+
+nav .box_1{
+	display: flex;
+    direction: rtl;
+    align-items: center;
+}
+nav .box_1 .nav-item {
+	margin-left: 20px;
+}
