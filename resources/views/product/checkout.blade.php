@@ -11,36 +11,29 @@
 <!--header-->
 <div class="header2 text-center"></div>
 <!--header//-->
-
-<div class="container">
-    <div class="row">    	
-        <div class="col-md-12" style="max-width:750px; margin: 0 auto; float:none;">        	
-            <div style="margin-top: 60px;">
-
-                @if ($message = Session::get('success'))
-                <div class="custom-alerts alert alert-success fade in">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                    {!! $message !!}
-                </div>
-				<script>localStorage.removeItem('basket');</script>
-                <?php Session::forget('success');?>
-                @endif
-
-                @if ($message = Session::get('error'))
-                <div class="custom-alerts alert alert-danger fade in">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                    {!! $message !!}
-                </div>
-                <?php Session::forget('error');?>
-                @endif
-        </div>
-    </div>
-</div>
 <div class="container-fluid" id="product-page">
 <div class="container product-detail-top">
 
    <div class="row">
-	<!-- This code uses the client side JavaScript PayPal SDK -->
+   <div style="margin-top: 60px; max-width:750px; margin: 0 auto; float:none;">
+		@if ($message = Session::get('success'))
+		<div class="custom-alerts alert alert-success fade in">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+			{!! $message !!}
+		</div>
+		<div class="success_payment_message"></div>
+		<script>localStorage.removeItem('basket');</script>
+		<?php Session::forget('success');?>
+		@endif
+
+		@if ($message = Session::get('error'))
+		<div class="custom-alerts alert alert-danger fade in">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+			{!! $message !!}
+		</div>
+		<?php Session::forget('error');?>
+		@endif
+	</div>
 	<div class="checkout-view hidden">
 		<div class="products-list"> 
 			<table class="table table-striped table-bordered products-list-table">
@@ -60,22 +53,22 @@
 				<input id="items_list" type="text" class="form-control hidden" name="items_list" value="" autofocus>
 				<div class="form-group">
 				<label>{{ __('Delivery Method') }}</label>
-				<select name="delivery_method" id="delivery_method_input" class="form-control" >
+				<select name="delivery_method" required id="delivery_method_input" class="form-control" >
 					<option>DHL</option>
 					<option>Aramex</option>
 				</select>
 				</div>
 				<div class="form-group">
 					<label>{{ __('Location') }}</label>
-					<input type="text" class="form-control" id="location_input" name="location" placeholder="{{ __('Country')}} - {{ __('City')}} - {{ __('Street')}}" value="{{auth()->check() ? (auth()->user()->country  .'-'. auth()->user()->city .'-'. auth()->user()->street) : ''}}"/>
+					<input type="text" class="form-control" required id="location_input" name="location" placeholder="{{ __('Country')}} - {{ __('City')}} - {{ __('Street')}}" value="{{auth()->check() ? (auth()->user()->country  .'-'. auth()->user()->city .'-'. auth()->user()->street) : ''}}"/>
 				</div>
 				<div class="form-group">
 					<label>{{ __('Mobile Number') }}</label>
-					<input type="phone" class="form-control" id="phone_input" name="phone_number" placeholder="example: +9627***" value="{{auth()->check() ? auth()->user()->phone  : ''}}"/>
+					<input type="phone" class="form-control" required id="phone_input" name="phone" placeholder="example: +9627***" value="{{auth()->check() ? auth()->user()->phone  : ''}}"/>
 				</div>
 				<div class="form-group">
 					<label>{{ __('Email') }}</label>
-					<input type="phone" class="form-control" id="email_input" name="email_input" placeholder="example: test@test.com" value="{{auth()->check() ? auth()->user()->email  : ''}}"/>
+					<input type="phone" class="form-control" required id="email_input" name="email" placeholder="example: test@test.com" value="{{auth()->check() ? auth()->user()->email  : ''}}"/>
 				</div>
 				<div class="form-group hidden">
 					<div class="col-md-6 col-md-offset-4">

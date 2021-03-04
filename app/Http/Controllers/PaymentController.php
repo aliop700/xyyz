@@ -22,6 +22,9 @@ use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 use App\Product;
+use App\Order;
+use App\OrderItem;
+use App\Events\OrderMade;
 
 class PaymentController extends Controller
 {
@@ -50,6 +53,8 @@ class PaymentController extends Controller
     public function postPaymentWithpaypal(Request $request)
     {   
         $items_list = json_decode($request->get('items_list'));
+        $request->session()->put('payment_request', $request->all());
+
         $max = count($items_list);
         $product_ids = [];
        
@@ -80,8 +85,7 @@ class PaymentController extends Controller
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)
-            ->setItemList($item_list_to_paypal)
-            ->setDescription('Enter Your transaction description');
+            ->setItemList($item_list_to_paypal);
 
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::route('status'))
@@ -91,7 +95,7 @@ class PaymentController extends Controller
         $payment->setIntent('Sale')
             ->setPayer($payer)
             ->setRedirectUrls($redirect_urls)
-            ->setTransactions(array($transaction));            
+            ->setTransactions(array($transaction));
         try {
             $payment->create($this->_api_context);
         } catch (\PayPal\Exception\PPConnectionException $ex) {
@@ -124,6 +128,7 @@ class PaymentController extends Controller
     public function getPaymentStatus(Request $request)
     {        
         $payment_id = Session::get('paypal_payment_id');
+        $payment_request =  $request->session()->get('payment_request');
 
         Session::forget('paypal_payment_id');
         if (empty($request->input('PayerID')) || empty($request->input('token'))) {
@@ -135,12 +140,58 @@ class PaymentController extends Controller
         $execution->setPayerId($request->input('PayerID'));        
         $result = $payment->execute($execution, $this->_api_context);
         
-        if ($result->getState() == 'approved') {         
+        if ($result->getState() == 'approved') {   
+            $payment_result = $result;
+            
+            $data = ['paypal' => $payment_result, 'payment_request' => $payment_request];
+
+            $this->saveOrder($data);
             \Session::put('success','Payment success !!');
             return Redirect::route('paywithpaypal');
         }
 
         \Session::put('error','Payment failed !!');
 		return Redirect::route('paywithpaypal');
+    }
+
+    public function saveOrder(array $data)
+    {        
+        $products = collect( json_decode($data['payment_request']['items_list'], true))->mapWithKeys(function($item){
+            return [$item['id'] => $item['quantity']];
+        })->toArray();
+        
+        $productsArr = [];
+        $order = new Order;
+
+        $order->total = 0.0;
+        $order->user_id = auth()->user()->id;
+        $order->delievery_method =$data['payment_request']['delivery_method'];
+        $order->phone = $data['payment_request']['phone'];
+        $order->email = $data['payment_request']['email'];
+        $order->location = $data['payment_request']['location'];
+        $order->status = 'pending';
+        $order->payment_id = $data['paypal']->id;
+
+        $order->save();
+
+        $productsRec = Product::whereIn('id', array_keys($products))->get();
+
+        foreach($productsRec as $product) {
+            $orderItem = new OrderItem;
+            $orderItem->product_id = $product->id;
+            $orderItem->price = $product->price;
+            $orderItem->quantity = $products[$product->id];
+            $order->items()->save($orderItem);
+
+        }
+
+        $order->reCalculateTotal();
+        
+        event(new OrderMade($order, auth()->user()));
+        return response()->success($order);
+
+
+
+
     }
 }

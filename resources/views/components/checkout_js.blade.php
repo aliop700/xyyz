@@ -67,7 +67,9 @@ function cleanBasket(){
 function removeProduct(product_id){
     var index;
     var product = products_in_basket.filter(function(item,key){
-        index = key;
+        if(item.product_id == product_id){
+             index = key;
+        }
         return item.product_id == product_id;
     })[0];
     products_in_basket.splice(index, 1);

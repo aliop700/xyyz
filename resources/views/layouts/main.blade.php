@@ -43,7 +43,7 @@
         @if( auth()->user() &&  auth()->user()->isAdmin())
            @include('components.admin_footer')
         @elseif (\Route::current()->getName() != 'loginPage' && \Route::current()->getName() != 'regPage')
-           @include('components.footer');
+           @include('components.footer')
         @endif
       </footer>
     </body>
