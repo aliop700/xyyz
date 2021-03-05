@@ -20,8 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth.custom', 'admin.custom'])->group(function() {
     Route::resource('cars', 'CarsController')->except(['index', 'show']);
     Route::resource('products', 'ProductController')->except(['index', 'show']);
+    Route::resource('contacts', 'ContactController')->except(['store']);
 
 });
+
+Route::post('contacts','ContactController@store');
 
 Route::get('setlocale/{locale}',function($lang){
     $lang = $lang == 'en' ? 'en' : 'ar';
