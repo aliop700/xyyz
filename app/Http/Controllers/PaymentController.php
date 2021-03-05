@@ -40,7 +40,11 @@ class PaymentController extends Controller
 
     public function payWithPaypal()
     {
-        return view('product.checkout');
+        return view('payment.checkout');
+    }
+    public function checkoutSuccessful()
+    {
+        return view('payment.checkoutSuccessful');
     }
     public function getProductPrices(array $product_ids){
         $products = Product::whereIn('id', array_keys($product_ids))->get();
@@ -147,7 +151,7 @@ class PaymentController extends Controller
 
             $this->saveOrder($data);
             \Session::put('success','Payment success !!');
-            return Redirect::route('paywithpaypal');
+            return Redirect::route('checkoutSuccessful');
         }
 
         \Session::put('error','Payment failed !!');

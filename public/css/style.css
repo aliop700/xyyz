@@ -27,6 +27,14 @@ ul{
 	margin:0;
 	padding:0;
 }
+.btn-primary{
+	border-color: #0d9feb;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary{
+	background-color: #0d9feb;
+    border-color: #0d9feb;
+	outline: 0;
+}
 .text-center {
   text-align: left;
 }
@@ -4461,6 +4469,40 @@ nav .box_1 .nav-item {
 	margin-left: 20px;
 }
 
-/* .nav-item{
+.success-color{
+	color: #a5dc86;
+}
+.success_payment_message{
+	text-align: center;
+}
+.success_payment_message i{
+	margin: 0 5px;
+}
+.success_payment_message .order_success{
+	width: 100%;
+    display: block;
+    max-width: 300px;
+    margin: 0 auto 20px;
+}
+.success_payment_message h4{
+	margin: 13px 0 20px;
+}
+#order_datails_modal dl{
+	padding: 10px 5px;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 7px;
+}
+#order_datails_modal dl.full dt{
+	margin-bottom: 10px;
+}
+#order_datails_modal dl:last-child{
+	border-bottom:0;
+}
 
-} */
+@media (min-width:1050px){
+	#order_datails_modal dl:not(.full) {
+		display: grid;
+		grid-template-columns: 30% 70%;
+	}
+}

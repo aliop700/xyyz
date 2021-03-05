@@ -101,8 +101,8 @@
 
 <div class="clearfix"></div>
 <script src="/js/sweet-alert.min.js"></script>
-<!-- <script src="https://www.paypal.com/sdk/js?client-id=AbiYw-cjDDsaJZPgD51Mz_9mSHNWj5OZC0YjjyJkDJ_1owqcrjo0go4XYREO5o4i0-nvDJE0jR6OIAmY&disable-funding=credit,card"></script> -->
 
-@include('components.checkout_js');
+@include('payment.checkout_js');
+
 
 @endsection
