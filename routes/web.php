@@ -21,11 +21,11 @@ Route::middleware(['auth.custom', 'admin.custom'])->group(function() {
     Route::resource('cars', 'CarsController')->except(['index', 'show']);
     Route::resource('products', 'ProductController')->except(['index', 'show']);
     Route::resource('contacts', 'ContactController')->except(['store']);
-
+    Route::get('/orders','OrderController@index');
 });
 
 Route::post('contacts','ContactController@store');
-
+Route::get('/userOrders','OrderController@userOrders');
 Route::get('setlocale/{locale}',function($lang){
     $lang = $lang == 'en' ? 'en' : 'ar';
     \Session::put('locale',$lang);
@@ -33,7 +33,6 @@ Route::get('setlocale/{locale}',function($lang){
 });
 
 Route::post('/orders','OrderController@store');
-Route::get('/orders','OrderController@index');
 Route::get('/cars','CarsController@index');
 Route::get('/cars/{id}','CarsController@show');
 Route::get('/products','ProductController@index');
