@@ -33,7 +33,7 @@ class AuthenticationController extends Controller
         if(!Auth::attempt($data)) {
             // return response()->fail('credentials are not correct', 404);
             return redirect()->back()->withInput($request->only('email', 'password'))->withErrors([
-                'approve' => 'Incorrect username or password',
+                'approve' => __('Incorrect username or password'),
             ]);
         }
 

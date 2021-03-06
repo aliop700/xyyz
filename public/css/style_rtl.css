@@ -578,7 +578,7 @@ i.boque{
 	width: 100%;
 	margin: 0 auto;
 }
-.contact form input[type="text"],.contact textarea{
+.contact form input,.contact textarea{
 	border:1px solid #fff;
 	color:#F6F3F3;
 	outline:0;
@@ -587,8 +587,8 @@ i.boque{
 	width:46%;
 	font-weight:300;
 }
-.contact form input[type="text"]:nth-child(2){
-	margin-left:1em;
+.contact form input[type="email"]{
+	margin-right:1em;
 }
 .contact textarea{
 	width: 95.5%;
@@ -2857,9 +2857,7 @@ ul.tabs-menu li a {
 .product-info{
 	text-align:center;
 }
-.ftr-list ul li:nth-child(2),.ftr-list ul li:nth-child(4),.ftr-list ul li:nth-child(5),.ftr-list2 ul li:nth-child(2),.ftr-list2 ul li:nth-child(4),.ftr-list2 ul li:nth-child(5){
-	display:none;
-}
+
 .contact textarea {
   min-height: 140px
 }
@@ -3005,7 +3003,7 @@ a.order {
 .cart h2 {
   margin: 1em 0;
 }
-.contact form input[type="text"]{
+.contact form input{
   padding: 0.7em 1em;
   width: 48%;
 }
@@ -3193,10 +3191,10 @@ a.btns {
   padding: 8px;
   font-size: 0.7em;
 }
-.contact form input[type="text"]:nth-child(2) {
+.contact form input[type="email"] {
   margin-left: 0;
 }
-.contact form input[type="text"] {
+.contact form input{
   padding: 0.65em 0.8em;
   width: 100%;
   margin: 0 0 23px 0;
@@ -4508,4 +4506,9 @@ nav .box_1 .nav-item {
 		display: grid;
 		grid-template-columns: 30% 70%;
 	}
+}
+
+form[name="contactUsForm"] input::placeholder,
+form[name="contactUsForm"] input::-webkit-input-placeholder{
+	color:#fff;
 }

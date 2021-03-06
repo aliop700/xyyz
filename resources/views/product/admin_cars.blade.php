@@ -80,11 +80,6 @@
             <tbody></tbody>
          </table>
       </div>
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap3.4.1.min.js"></script>
-      <script src="/js/jquery.dataTables.min.js"></script>
-      <script src="/js/dataTables.bootstrap4.min.js"></script>
-      <script src="js/sweet-alert.min.js"></script>
 <!--fotter-->
 <script>
 
@@ -159,13 +154,13 @@ function getCars(firstLoad){
 function deleteCar(id){
    swal("", {
             icon:'warning',
-            title:'Are you sure you wante to delete this car!',
+            title:'{{__("Are you sure you wante to delete this car!")}}',
             buttons: {
                catch: {
-                  text: "Delete",
+                  text: "{{__('Delete')}}",
                   value: true,
                },
-               cancel: true,
+               cancel: '{{__("Close")}}',
             },
    })
    .then(function(value) {

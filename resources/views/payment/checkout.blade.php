@@ -100,7 +100,6 @@
 </div>
 
 <div class="clearfix"></div>
-<script src="/js/sweet-alert.min.js"></script>
 
 @include('payment.checkout_js');
 

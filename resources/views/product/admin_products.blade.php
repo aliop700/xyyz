@@ -112,11 +112,6 @@
             <tbody></tbody>
          </table>
       </div>
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap3.4.1.min.js"></script>
-      <script src="/js/jquery.dataTables.min.js"></script>
-      <script src="/js/dataTables.bootstrap4.min.js"></script>
-      <script src="/js/sweet-alert.min.js"></script>
       <script>
 
          $('#add_car_form input[name="name"]').on('keyup',function(){
@@ -240,10 +235,10 @@ function deleteProduct(id){
             title:'{{ __("Are you sure you wante to delete this product!")}}',
             buttons: {
                catch: {
-                  text: "{{ __('Remove')}}",
+                  text: "{{ __('Delete')}}",
                   value: true,
                },
-               cancel: true,
+                cancel: '{{__("Close")}}',
             },
    })
    .then(function(value) {

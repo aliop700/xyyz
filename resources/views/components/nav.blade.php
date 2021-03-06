@@ -1,4 +1,3 @@
-<script src="/js/jquery.min.js"></script>
 
 	 <div class="container main-navbar">
 	     <div class="main-header">

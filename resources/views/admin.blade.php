@@ -65,11 +65,6 @@
             <tbody></tbody>
          </table>
       </div>
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap3.4.1.min.js"></script>
-      <script src="/js/jquery.dataTables.min.js"></script>
-      <script src="/js/dataTables.bootstrap4.min.js"></script>
-      <script src="js/main.js"></script>
       <script>
       var ordersList;
          getOrders();
@@ -172,52 +167,4 @@
       
     </div>
   </div>
-  
-
-<!-- 
-  $('#order_datails_modal .modal-body').html(
-            '<div class="card">'+
-               '<dl class="">'+
-                  '<dt>id</dt>'+
-                  '<dd>'+order.id+'</dd>'+
-               '</dl>'+
-               '<dl class="full">'+
-                  '<dt>{{__("Order items")}}</dt>'+
-                  '<dd>'+
-                  '<table class="table table-striped table-bordered ">'+
-                  '<thead><th>Name</th><th>Qouantity</th><th>image</th></thead>'+
-                  '</table>'+
-                  '</dd>'+
-               '</dl>'+
-               '<dl class="">'+
-                  '<dt>{{__("Email")}}</dt>'+
-                  '<dd>'+order.email+'</dd>'+
-               '</dl>'+
-               '<dl class="">'+
-                  '<dt>{{__("Mobile Number")}}</dt>'+
-                  '<dd>'+order.phone+'</dd>'+
-               '</dl>'+
-               '<dl class="">'+
-                  '<dt>{{__("Date")}}</dt>'+
-                  '<dd>'+order.created_at+'</dd>'+
-               '</dl>'+
-               '<dl class="">'+
-                  '<dt>{{__("Location")}}</dt>'+
-                  '<dd>'+order.location+'</dd>'+
-               '</dl>'+
-               '<dl class="">'+
-                  '<dt>{{__("Delivery Method")}}</dt>'+
-                  '<dd>'+order.delievery_method+'</dd>'+
-               '</dl>'+
-               '<dl class="">'+
-                  '<dt>{{__("Payment Id (Paypal)")}}</dt>'+
-                  '<dd>'+order.payment_id+'</dd>'+
-               '</dl>'+
-               '<dl class="">'+
-                  '<dt>{{__("Status")}}</dt>'+
-                  '<dd>'+order.status+'</dd>'+
-               '</dl>'+
-               '<div class="clearfix"></div>'+
-               '</div>'); -->
-<!-- end modal -->
 @endsection
