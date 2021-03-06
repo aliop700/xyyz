@@ -85,7 +85,7 @@
 				<a class="auth_mask" onclick="askToLogin()"></a>
 			@endif
 			<div id="checkout-button">
-	  			<button class="btn btn-primary btn-lg" id="pay_with_paypal_button" onclick="payWithPaypal()"> Pay with PayPal <i class="fa fa-paypal" aria-hidden="true"></i></button>
+	  			<button class="btn btn-primary btn-lg" id="pay_with_paypal_button" onclick="payWithPaypal()"> {{__('Pay with')}} PayPal <i class="fa fa-paypal" aria-hidden="true"></i></button>
 			</div>
 			<!-- <div id="paypal-button-container" style="text-align: center;"></div> -->
 		</div>

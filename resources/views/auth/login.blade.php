@@ -20,9 +20,9 @@
 	</div>
 	@endif
 		
-		 <div class="log login-register-box">			 
+		 <div class="log login-register-box" style="display:none">			 
 				<h2>{{ __('Login')}}</h2>
-				 <form name="login_form" method="post" action="{{route('loginPost')}}" id="login_form">
+				 <form name="login_form"  method="post" action="{{route('loginPost')}}" id="login_form">
 					 @csrf
 					 <h5>{{ __('Email')}}:</h5>	
 					 <input type="text" name="email">
