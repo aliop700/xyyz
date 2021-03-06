@@ -11,42 +11,9 @@
 <!--header-->
 <div class="header2 text-center"></div>
 <!--header//-->
-<div class="subnavbar">
-
-<div class="subnavbar-inner">
-
-   <div class="container">
-
-      <ul class="mainnav">
       
-      
-         <li class="active">
-            <a href="{{route('admin')}}">
-               <i class="fa fa-shopping-cart"></i>
-               <span>{{ __('Orders')}}</span>
-            </a>    				
-         </li>
-         <li class="">
-            <a href="{{route('admin_products')}}">
-               <i class="fa fa-microchip"></i>
-               <span>{{ __('Products')}}</span>
-            </a>    				
-         </li>
-         <li>
-            <a href="{{route('admin_cars')}}">
-               <i class="fa fa-car"></i>
-               <span>{{ __('Cars')}}</span>
-            </a>    				
-         </li>  
-         
-          
-      </ul>
+@include('components.admin_sub_nav')
 
-   </div> <!-- /container -->
-
-</div> <!-- /subnavbar-inner -->
-
-</div>
       <div class="main-content-admin container">
        <table id="orders" class="table table-striped table-bordered dt-responsive" style="width:100%">
             <thead>

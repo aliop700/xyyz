@@ -19,7 +19,7 @@
       </div>
       </div>
       @endif
-		  <div class="login-register-box  login-right">
+		  <div class="login-register-box  login-right" style="display:none;">
 		  <form name="Register_form" method="post" id="Register_form" action="{{route('regPost')}}">
             @csrf   
           <div class=" reg-form">

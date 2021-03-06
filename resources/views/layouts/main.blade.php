@@ -1,4 +1,8 @@
 <html>
+    <div id="loadOverlay" style=" position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
+      <img style=" width: 100px; position:absolute; top:50%; left:50%; transform:translate(-50% , -50%); z-index:2000;" src="/images/loading.gif"/>
+    </div>
+
     <head>
         <title>
          Autorepairskit - @yield('title')
@@ -36,6 +40,7 @@
         <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
         <meta name="theme-color" content="#0d9feb">
     </head>
+
     <script>
       let lang ="{{App::getLocale()}}"
     </script>
@@ -50,7 +55,7 @@
         <script src="/js/dataTables.bootstrap4.min.js"></script>
         @include('components.admin_footer')
         @elseif (\Route::current()->getName() != 'loginPage' && \Route::current()->getName() != 'regPage')
-        @include('components.footer');
+          @include('components.footer')
         @endif
       </footer>
       <script src="/js/sweet-alert.min.js"></script> 

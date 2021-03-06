@@ -74,3 +74,7 @@ Route::get('/checkoutSuccessful',function(){
 Route::get('paywithpaypal', array('as' => 'paywithpaypal','uses' => 'PaymentController@payWithPaypal',));
 Route::post('paypal', array('as' => 'paypal','uses' => 'PaymentController@postPaymentWithpaypal',));
 Route::get('paypal', array('as' => 'status','uses' => 'PaymentController@getPaymentStatus',));
+
+Route::get('/contactUs',function(){
+    return view('admin.contact_us');
+})->name('contactUs');

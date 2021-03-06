@@ -36,6 +36,7 @@
     "Remove":"حذف",
     "Delete":"حذف",
     "Close":"الغاء",
+    "Pay with":"ادفع من خلال",
     "Add":"اضافة",
     "Car Name":"اسم السيارة",
     "Add Car":"اضف سيارة",
@@ -70,5 +71,6 @@
     "Details":"تفاصيل",
     "Create":"انشاء",
     "Submit":"إرسال",
-    "You did not select any product":"لم تحدد اي منتج"
+    "You did not select any product":"لم تحدد اي منتج",
+    "Contacts":"التواصل"
 }

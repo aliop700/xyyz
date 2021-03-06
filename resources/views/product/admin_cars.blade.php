@@ -5,32 +5,7 @@
 <!--header-->
 <div class="header2 text-center"></div>
 <!--header//-->
-<div class="subnavbar">
-
-<div class="subnavbar-inner">
-   <div class="container">
-      <ul class="mainnav">
-         <li>
-            <a href="{{route('admin')}}">
-               <i class="fa fa-shopping-cart"></i>
-               <span>{{ __('Orders')}}</span>
-            </a>    				
-         </li>
-         <li>
-            <a href="{{route('admin_products')}}">
-               <i class="fa fa-microchip"></i>
-               <span>{{ __('Products')}}</span>
-            </a>    				
-         </li>  
-         <li class="active">
-            <a href="{{route('admin_cars')}}">
-               <i class="fa fa-car"></i>
-               <span>{{ __('Cars')}}</span>
-            </a>    				
-         </li>  
-      </ul>
-   </div> <!-- /container -->
-</div> <!-- /subnavbar-inner -->
+@include('components.admin_sub_nav')
 
 <div class="container">
     <div class="actions-btn">
