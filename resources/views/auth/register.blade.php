@@ -24,7 +24,7 @@
             @csrf   
           <div class=" reg-form">
 			 <div class="reg">
-	        	 <h2>Register</h2>
+	        	 <h2>{{__('Register')}}</h2>
 
 					 <ul>
 						 <li class="text-info">{{ __('Name')}}: </li>
@@ -61,7 +61,7 @@
 						 <li class="text-info">{{ __('Street')}}:</li>
 						 <li><input required type="text" name="street"></li>
 					 </ul>						
-					 <input type="submit" value="{{ __('Register')}}" class="Register-btn" id="submit_reg"> 
+					 <input type="submit" value="{{ __('Submit')}}" class="Register-btn" id="submit_reg"> 
 				
 			 </div>
 		 </div>

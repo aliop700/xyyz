@@ -1,7 +1,7 @@
 <div class="checkout-container">
 	<div class="container">
 		<div class="basket-info">
-			<h1>{{ __('You Have')}} <span class="basket-count flusher-checkout">3</span> {{ __('items in your basket')}}</h1>
+			<h1>{{ __('You Have')}} <span class="basket-count flusher-checkout"></span> {{ __('items in your basket')}}</h1>
 		</div>
 		<a  href="{{route('checkout')}}" class="btn btn-primary btn-lg checkout-btn">{{ __('Checkout Now')}}</a>
 	</div>
@@ -11,12 +11,12 @@
 <div class="fotter">
 	 <div class="container">
 	 <div class="col-md-6 contact">
-		<form>
-			 <input type="text" class="text" value="Name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name...';}">
-			 <input type="text" class="text" value="Email..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email...';}">
-			 <textarea onfocus="if(this.value == 'Message...') this.value='';" onblur="if(this.value == '') this.value='Message...';" >Message...</textarea>	
+		 <form id="contactUsForm" name="contactUsForm">
+			 <input name="name" type="text" required class="text" placeholder="{{__('Name')}}...">
+			 <input name="email" type="email" required class="text" placeholder="{{__('Email')}}...">
+			 <textarea name="message" required onfocus="if(this.value == '{{__("Message")}}...') this.value='';" onblur="if(this.value == '') this.value='{{__("Message")}}...';">{{__('Message')}}...</textarea>	
 			 <div class="clearfix"></div>
-			 <input type="submit" value="SUBMIT">
+			 <input type="submit"  value="{{__('Submit')}}">
 		 </form>
 
 	 </div>
@@ -61,4 +61,33 @@
 		$('.checkout-container').addClass('show');
 		$('.basket_icon_nav').addClass('flusher-checkout');
 	}
+
+	$('#contactUsForm').on('submit',function(e){
+    	e.preventDefault();
+		var payload ={};
+		$('#contactUsForm input:not([type="submit"]), #contactUsForm textarea').each(function(){
+			payload[$(this).attr('name')] = $(this).val();
+		})
+		$.ajax({
+			type: "post",
+			url: '/contacts',
+			data: payload,
+			success: function(res) {
+				if(res.success){
+					swal({
+						title: '{{__("Successfully") }}',
+						icon:'success',
+						buttons: {
+							cancel: false,
+							catch: {
+							text: "{{ __('Ok') }}",
+							value: true,
+							},
+						},
+					});
+				}
+			}
+			
+		})
+	})
 </script>

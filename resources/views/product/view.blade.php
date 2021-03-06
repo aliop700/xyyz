@@ -58,7 +58,6 @@
 	</div>
 	</form>
 <div class="clearfix"></div>
-<script src="/js/sweet-alert.min.js"></script>
 <script>
   function addItemToBasket(){
     var product_id ='{{$product->id}}';

@@ -34,6 +34,7 @@
     "Car":"السيارة",
     "Ok":"موافق",
     "Remove":"حذف",
+    "Delete":"حذف",
     "Close":"الغاء",
     "Add":"اضافة",
     "Car Name":"اسم السيارة",
@@ -64,5 +65,10 @@
     "Are you sure you wante to delete this car!":"هل انت متأكد تريد حذف هذه السيارة!",
     "Actions":"اجراءات",
     "All Cars":"كل السيارات",
+    "Date":"التاريخ",
+    "Incorrect username or password":"اسم المستخدم أو كلمة المرور غير صحيحة",
+    "Details":"تفاصيل",
+    "Create":"انشاء",
+    "Submit":"إرسال",
     "You did not select any product":"لم تحدد اي منتج"
 }

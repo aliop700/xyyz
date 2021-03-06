@@ -4,8 +4,11 @@
          Autorepairskit - @yield('title')
         </title>
         <link href="{{asset('/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
-        <link href="{{asset('/css/bootstrap-responsive.min.css')}}" rel="stylesheet" type="text/css" media="all" />
-        <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" media="all" />
+        
+        @if( auth()->user() &&  auth()->user()->isAdmin())
+          <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" media="all" />
+        @endif
+
         @if (App::getLocale() == 'en')
         <link href="{{asset('/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
         @else
@@ -37,14 +40,19 @@
       let lang ="{{App::getLocale()}}"
     </script>
     <body>
+      <script src="/js/jquery.min.js"></script>
       <nav> @include('components.nav')</nav>
       <section class="main-content"> @yield('content')</section>
       <footer>
         @if( auth()->user() &&  auth()->user()->isAdmin())
-           @include('components.admin_footer')
+        <script src="/js/bootstrap3.4.1.min.js"></script>
+        <script src="/js/jquery.dataTables.min.js"></script>
+        <script src="/js/dataTables.bootstrap4.min.js"></script>
+        @include('components.admin_footer')
         @elseif (\Route::current()->getName() != 'loginPage' && \Route::current()->getName() != 'regPage')
-           @include('components.footer')
+        @include('components.footer');
         @endif
       </footer>
+      <script src="/js/sweet-alert.min.js"></script> 
     </body>
 </html>
