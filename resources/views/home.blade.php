@@ -2,6 +2,7 @@
 
 @section('title', __('Home'))
 @section('content')
+
 <div class="header">
 	<div class="caption">
 		<h1> {{ __('SOFTWARES & CARS KIT') }}</h1>	 
