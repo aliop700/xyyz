@@ -4510,3 +4510,6 @@ form[name="contactUsForm"] input::-webkit-input-placeholder{
 	color:#fff;
 }
 #loadOverlay{display: none;}
+.my_orders_main{
+	padding: 20px 0;
+}

@@ -161,24 +161,11 @@
                         )
                      })
                     
-                     if ( $.fn.dataTable.isDataTable( '#products' ) ) {
-                        cars_table = $('#products').DataTable();
-                     }
-                     else {
-                        cars_table = $('#products').DataTable({
-                        "initComplete": function(settings, json) {
-                           $('table#products').parent().addClass('dataTableFirstWrapper')
-                        }
-                     });
-                     }
+                     drawDataTable('products'); 
 
                   },
                   error: function(){
-                  $('#products').DataTable({
-                     "initComplete": function(settings, json) {
-                           $('table#products').parent().addClass('dataTableFirstWrapper')
-                      }
-                  });
+                     drawDataTable('products'); 
                      alert('failure');
                   }
                });

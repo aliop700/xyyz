@@ -101,25 +101,13 @@ function getCars(firstLoad){
                   )
                })
             }
-            if ( $.fn.dataTable.isDataTable( '#cars' ) ) {
-               cars_table = $('#cars').DataTable();
-            }
-            else {
-               cars_table = $('#cars').DataTable({
-                  "initComplete": function(settings, json) {
-                     $('table#cars').parent().addClass('dataTableFirstWrapper')
-                  }
-               });
-            }
+           
+            drawDataTable('cars'); 
         
 
          },
 			error: function(){
-           $('#cars').DataTable({
-               "initComplete": function(settings, json) {
-                  $('table#cars').parent().addClass('dataTableFirstWrapper')
-               }
-            });
+            drawDataTable('cars'); 
             alert('failure');
          }
     	});

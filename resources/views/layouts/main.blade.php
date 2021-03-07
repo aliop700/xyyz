@@ -9,9 +9,7 @@
         </title>
         <link href="{{asset('/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
         
-        @if( auth()->user() &&  auth()->user()->isAdmin())
-          <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" media="all" />
-        @endif
+
 
         @if (App::getLocale() == 'en')
         <link href="{{asset('/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
@@ -50,9 +48,7 @@
       <section class="main-content"> @yield('content')</section>
       <footer>
         @if( auth()->user() &&  auth()->user()->isAdmin())
-        <script src="/js/bootstrap3.4.1.min.js"></script>
-        <script src="/js/jquery.dataTables.min.js"></script>
-        <script src="/js/dataTables.bootstrap4.min.js"></script>
+        @include('components.datatable')
         @include('components.admin_footer')
         @elseif (\Route::current()->getName() != 'loginPage' && \Route::current()->getName() != 'regPage')
           @include('components.footer')

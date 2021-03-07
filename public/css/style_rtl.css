@@ -4516,3 +4516,7 @@ form[name="contactUsForm"] input::-webkit-input-placeholder{
 }
 
 #loadOverlay{display: none;}
+
+.my_orders_main{
+	padding: 20px 0;
+}

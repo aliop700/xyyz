@@ -77,3 +77,7 @@ Route::get('paypal', array('as' => 'status','uses' => 'PaymentController@getPaym
 Route::get('/contactUs',function(){
     return view('admin.contact_us');
 })->name('contactUs');
+
+Route::get('/myOrders',function(){
+    return view('orders.user_orders');
+})->name('myOrders');
