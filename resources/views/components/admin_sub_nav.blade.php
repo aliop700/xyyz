@@ -31,6 +31,7 @@
                <span>{{ __('Contacts')}}</span>
             </a>    				
          </li>  
+         <div class="clearfix"></div>
          
           
       </ul>

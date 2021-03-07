@@ -3128,6 +3128,12 @@ p.click {
 .box_1 h3 {
   padding: 6px 4px;
 }
+.tab-grids{
+	min-width: 250px;
+}
+.subnavbar .container > ul > li{
+	min-width: 70px !important;
+}
 }
 @media (max-width: 480px){
 .main-header{
@@ -4350,7 +4356,7 @@ input[disabled] , button[disabled] a[disabled]{
 
   @media (max-width:950px){
 	.logo img{
-		width: 180px;
+		width: 150px !important;
 	}
   }
 

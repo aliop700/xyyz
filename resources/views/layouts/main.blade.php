@@ -1,6 +1,6 @@
 <html>
     <div id="loadOverlay" style=" position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
-      <img style=" width: 100px; position:absolute; top:50%; left:50%; transform:translate(-50% , -50%); z-index:2000;" src="/images/loading.gif"/>
+      <img style=" width: 70px; position:absolute; top:50%; left:50%; transform:translate(-50% , -50%); z-index:2000;" src="/images/loading.gif"/>
     </div>
 
     <head>

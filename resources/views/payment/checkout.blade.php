@@ -44,6 +44,7 @@
 					<th></th>
 				</thead>
 				<tbody></tbody>
+				<tfoot></tfoot>
 			</table>
 		</div>
 		<div class="delivery_method_box">

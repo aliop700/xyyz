@@ -15,6 +15,7 @@
                     <tr>
                         <th>Id</th>
                         <th>{{ __('id(Paypal)') }}</th>
+                        <th>{{ __('Amount') }}</th>
                         <th>{{ __('Order Status') }}</th>
                         <th>{{ __('Date') }}</th>
                     </tr>
@@ -41,6 +42,7 @@
                            '<tr>'+
                               '<td>'+order.id+'</td>'+
                               '<td>'+order.payment_id+'</td>'+
+                              '<td>'+order.total+'</td>'+
                               '<td>'+order.status+'</td>'+
                               '<td>'+order.created_at+'</td>'+
                            '</tr>'

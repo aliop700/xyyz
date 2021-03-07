@@ -24,6 +24,7 @@
                   <th>{{ __('Mobile Number') }}</th>
                   <th>{{ __('Location') }}</th>
                   <th>{{ __('Delivery Method') }}</th>
+                  <th>{{ __('Amount') }}</th>
                   <th>{{ __('id(Paypal)') }}</th>
                   <th>{{ __('Order Status') }}</th>
                   <th>{{ __('Date') }}</th>
@@ -52,6 +53,7 @@
                               '<td>'+order.phone+'</td>'+
                               '<td>'+order.location+'</td>'+
                               '<td>'+order.delievery_method+'</td>'+
+                              '<td>'+order.total+'</td>'+
                               '<td>'+order.payment_id+'</td>'+
                               '<td>'+order.status+'</td>'+
                               '<td>'+order.created_at+'</td>'+
