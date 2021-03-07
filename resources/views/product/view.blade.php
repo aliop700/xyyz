@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Index')
+@section('title', App::getLocale() == "en" ? $product->name : $product->name_ar)
 @section('content')
 <!--header-->
 <div class="header2 text-center">
