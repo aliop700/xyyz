@@ -55,23 +55,14 @@
                               '<td>'+order.payment_id+'</td>'+
                               '<td>'+order.status+'</td>'+
                               '<td>'+order.created_at+'</td>'+
-                              // '<td><button class="btn btn-primary" onclick="orderDetails('+order.id+')">{{__("Details")}}</td>'+
                            '</tr>'
                         )
                      })
-                     $('#orders').DataTable({
-                        "initComplete": function(settings, json) {
-                           $('table#orders').parent().addClass('dataTableFirstWrapper')
-                        }
-                     });
+                     drawDataTable('orders'); 
 
                   },
                   error: function(){
-                  $('#orders').DataTable({
-                        "initComplete": function(settings, json) {
-                           $('table#orders').parent().addClass('dataTableFirstWrapper')
-                        }
-                     });
+                     drawDataTable('orders'); 
                      alert('failure');
                   }
                });

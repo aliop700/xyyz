@@ -78,6 +78,6 @@ Route::get('/contactUs',function(){
     return view('admin.contact_us');
 })->name('contactUs');
 
-Route::get('/userOrders',function(){
+Route::get('/myOrders',function(){
     return view('orders.user_orders');
-})->name('userOrders');
+})->name('myOrders');

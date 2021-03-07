@@ -45,19 +45,11 @@
                            '</tr>'
                         )
                      })
-                     $('#contactUs').DataTable({
-                        "initComplete": function(settings, json) {
-                           $('table#contactUs').parent().addClass('dataTableFirstWrapper')
-                        }
-                     });
+                     drawDataTable('contactUs'); 
 
                   },
                   error: function(){
-                  $('#contactUs').DataTable({
-                        "initComplete": function(settings, json) {
-                           $('table#contactUs').parent().addClass('dataTableFirstWrapper')
-                        }
-                     });
+                     drawDataTable('contactUs'); 
                      alert('failure');
                   }
                });
