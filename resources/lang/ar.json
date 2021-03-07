@@ -73,5 +73,7 @@
     "Submit":"إرسال",
     "You did not select any product":"لم تحدد اي منتج",
     "Contacts":"التواصل",
-    "My Orders":"طلباتي"
+    "Payment failed !!":"تم الغاء عملية الدفع!",
+    "My Orders":"طلباتي",
+    "Amount":"المبلغ"
 }

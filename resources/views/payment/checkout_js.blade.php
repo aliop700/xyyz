@@ -1,13 +1,25 @@
 <script>
 var products_in_basket = localStorage.getItem('basket') != null ? JSON.parse(localStorage.getItem('basket')) : [];
 
+function getAmount(){
+    var prices_arr = products_in_basket.map(function(item) {
+            return Number(item.product_price) * Number(item.quantity)
+        })
+    var amount_ = prices_arr.length ? prices_arr.reduce(function(total, amount) {
+        return total + amount;
+    }) : 0;
+    return amount_;
+}
+
 function payWithPaypal(){
-            var prices_arr = products_in_basket.map(function(item) {
-                return Number(item.product_price) * Number(item.quantity)
-            })
-            var amount_ = prices_arr.length ? prices_arr.reduce(function(total, amount) {
-                return total + amount;
-            }) : 0;
+            // var prices_arr = products_in_basket.map(function(item) {
+            //     return Number(item.product_price) * Number(item.quantity)
+            // })
+            // var amount_ = prices_arr.length ? prices_arr.reduce(function(total, amount) {
+            //     return total + amount;
+            // }) : 0;
+
+            var amount_ = getAmount();
             var items_ = products_in_basket.map(function(item){
                 return {
                     "name": item.product_name,
@@ -80,10 +92,10 @@ function removeProduct(product_id){
 }
 
 function drawProducts(){
-    $('.products-list-table tbody').empty();
+    $('.products-list-table tbody , .products-list-table tfoot').empty();
     if(products_in_basket.length){
-        
         $('.checkout-view').removeClass('hidden');
+        
         products_in_basket.forEach(function(item){
                 $('.products-list-table tbody').append(
                 '<tr id="'+item.product_id+'" >'+
@@ -91,8 +103,18 @@ function drawProducts(){
                 '<td>'+item.product_price+'</td>'+
                 '<td>'+item.quantity+'</td>'+
                 '<td><button onclick="removeProduct('+item.product_id+')" class="danger btn">{{ __("Remove") }} &nbsp;<i class="fa fa-remove danger"></i> </button></td>'
-            )
+            );
         })
+        var amount_ = getAmount();
+
+        $('.products-list-table tfoot').append(
+                '<tr>'+
+                '<td><h3>{{__("Total")}}</h3></td>'+
+                '<td><h3>'+amount_+'</h3></td>'+
+                '<td></td>'+
+                '<td></td>'+
+                '<tr>'
+            );
     }else{
         $('.no-data-to-checkout').removeClass('hidden');
         $('.checkout-view').addClass('hidden');

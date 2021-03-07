@@ -136,7 +136,7 @@ class PaymentController extends Controller
 
         Session::forget('paypal_payment_id');
         if (empty($request->input('PayerID')) || empty($request->input('token'))) {
-            \Session::put('error','Payment failed');
+            \Session::put('error',__("Payment failed !!"));
             return Redirect::route('paywithpaypal');
         }
         $payment = Payment::get($payment_id, $this->_api_context);        
@@ -154,7 +154,7 @@ class PaymentController extends Controller
             return Redirect::route('checkoutSuccessful');
         }
 
-        \Session::put('error','Payment failed !!');
+        \Session::put('error','__("Payment failed !!")' );
 		return Redirect::route('paywithpaypal');
     }
 
