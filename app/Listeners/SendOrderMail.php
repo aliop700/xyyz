@@ -35,6 +35,6 @@ class SendOrderMail
 
         $mailTo = $order->email ?? $user->email;
 
-        Mail::to($user->email)->send(new OrderMadeMail($order, $user));
+        Mail::to($mailTo)->send(new OrderMadeMail($order, $user));
     }
 }
