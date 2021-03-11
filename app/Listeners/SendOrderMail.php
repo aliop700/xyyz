@@ -33,6 +33,8 @@ class SendOrderMail
         $order = $event->order;
         $user = $event->user;
 
+        $mailTo = $order->email ?? $user->email;
+
         Mail::to($user->email)->send(new OrderMadeMail($order, $user));
     }
 }
