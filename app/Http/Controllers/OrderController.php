@@ -142,4 +142,21 @@ class OrderController extends Controller
     {
         return response()->success(auth()->user()->orders);
     }
+
+    public function changeStatus(Request $request, Order $order)
+    {
+        $validator = Validator::make($request->all(), [
+           'status' => 'required'
+        ]);
+
+        if($validator->fails()) {
+            return response()->fail($validator->errors(), 422);
+        }
+
+        $order->status = $request->status;
+
+        $order->save();
+
+        return response()->success($order, 202);
+    }
 }

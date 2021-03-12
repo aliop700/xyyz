@@ -30,9 +30,11 @@ class SendOrderMail
     public function handle(OrderMade $event)
     {
         
-        // $order = $event->order;
-        // $user = $event->user;
+        $order = $event->order;
+        $user = $event->user;
 
-        // Mail::to($user->email)->send(new OrderMadeMail($order, $user));
+        $mailTo = $order->email ?? $user->email;
+
+        Mail::to($mailTo)->send(new OrderMadeMail($order, $user));
     }
 }

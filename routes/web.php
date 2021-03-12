@@ -22,6 +22,7 @@ Route::middleware(['auth.custom', 'admin.custom'])->group(function() {
     Route::resource('products', 'ProductController')->except(['index', 'show']);
     Route::resource('contacts', 'ContactController')->except(['store']);
     Route::get('/orders','OrderController@index');
+    Route::post('/orders/change/{order}','OrderController@changeStatus');
 });
 
 Route::post('contacts','ContactController@store');
