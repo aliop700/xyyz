@@ -29,6 +29,12 @@
 <script>
       var ordersList;
          getOrders();
+
+         const statusLocalization= {
+                                 "pending": "{{__('pending')}}",
+                                 "canceled": "{{__('canceled')}}",
+                                 "delivered": "{{__('delivered')}}",
+                              };
          function getOrders(){
             $.ajax({
                type: "get",
@@ -43,7 +49,7 @@
                               '<td>'+order.id+'</td>'+
                               '<td>'+order.payment_id+'</td>'+
                               '<td>'+order.total+'</td>'+
-                              '<td>'+order.status+'</td>'+
+                              '<td class=" orderStatusTd '+order.status+'">'+statusLocalization[order.status]+'</td>'+
                               '<td>'+order.created_at+'</td>'+
                            '</tr>'
                         )

@@ -14,7 +14,7 @@
 				
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="{{auth()->user() &&  auth()->user()->isAdmin() ? route('admin') : route('home')}}"><i class="fa fa-home nav-item-icon"></i> {{ __('Home') }}</a>
-						@if(auth()->check())
+						@if(auth()->check() && !auth()->user()->isAdmin())
 							<a class="dropdown-item" href="{{route('myOrders')}}"><i class="fa fa-shopping-basket nav-item-icon"></i> {{ __('My Orders') }}</a>
 						@endif
 						

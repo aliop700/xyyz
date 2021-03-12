@@ -4519,3 +4519,25 @@ form[name="contactUsForm"] input::-webkit-input-placeholder{
 .my_orders_main{
 	padding: 20px 0;
 }
+
+button.status {
+	color:#fff;
+}
+.status.pending{
+	background:#f2c517  !important;
+}
+.status.canceled{
+	background:#ff3838 !important;
+}
+.status.delivered{
+	background: #a5dc86  !important;
+}
+.orderStatusTd.pending{
+	color:#f2c517  !important;
+}
+.orderStatusTd.canceled{
+	color:#ff3838 !important;
+}
+.orderStatusTd.delivered{
+	color:#a5dc86 !important;
+}
