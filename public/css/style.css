@@ -4522,6 +4522,7 @@ form[name="contactUsForm"] input::-webkit-input-placeholder{
 
 button.status {
 	color:#fff;
+	width: 100%;
 }
 .status.pending{
 	background:#f2c517  !important;
