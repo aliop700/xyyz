@@ -75,5 +75,10 @@
     "Contacts":"التواصل",
     "Payment failed !!":"تم الغاء عملية الدفع!",
     "My Orders":"طلباتي",
-    "Amount":"المبلغ"
+    "Amount":"المبلغ",
+    "pending":"قيد الانتظار",
+    "delivered":"تم التوصيل",
+    "Choose order status":"اختر حالة الطلب",
+    "canceled":"ملغي",
+    "Save":"حفظ"
 }

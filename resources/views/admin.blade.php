@@ -36,6 +36,12 @@
       <script>
       var ordersList;
          getOrders();
+
+        const statusLocalization= {
+                                 "pending": "{{__('pending')}}",
+                                 "canceled": "{{__('canceled')}}",
+                                 "delivered": "{{__('delivered')}}",
+                              };
          function getOrders(){
             $.ajax({
                type: "get",
@@ -44,6 +50,7 @@
                   {
                      $('#orders tbody').empty();
                      ordersList = res.data;
+                     
                       res.data.forEach(function(order){
                         $('#orders tbody').append(
                            '<tr>'+
@@ -55,7 +62,9 @@
                               '<td>'+order.delievery_method+'</td>'+
                               '<td>'+order.total+'</td>'+
                               '<td>'+order.payment_id+'</td>'+
-                              '<td>'+order.status+'</td>'+
+                              '<td id="status_col_'+order.id+'">'+
+                               '<button onclick="changeStatus('+order.id+')" class="btn status '+order.status+'">'+statusLocalization[order.status]+'</button>'+
+                              '</td>'+
                               '<td>'+order.created_at+'</td>'+
                            '</tr>'
                         )
@@ -104,6 +113,68 @@
                $('#order_datails_modal table').append(items_table);
                
             $('#order_datails_modal').modal('show');
+         }
+
+      function changeStatus(id){
+            var order = ordersList.filter(function(order){
+               return order.id == id;
+            })[0];
+            var currentStatus = order.status;
+            var statusList = document.createElement('select');
+            statusList.classList.add('form-control');
+            Object.keys(statusLocalization).forEach(function(status){
+               var opt = document.createElement('option');
+               opt.appendChild( document.createTextNode(statusLocalization[status]) );
+               opt.value = status; 
+               if(currentStatus == status){
+                  opt.setAttribute('selected','selected');
+               }
+               statusList.appendChild(opt); 
+            })
+            swal({
+                  text: '{{__("Choose order status")}}',
+                  content: statusList,
+                  buttons: {
+    					cancel: '{{__("Close")}}',
+    					catch: {
+    					text: "{{ __ ('Ok')}}",
+    					value: true,
+                   closeModal: false,
+    					},
+    				},
+               })
+               .then(function (value) {
+                  console.log(value , statusList.value);
+
+                  if(value &&  statusList.value != currentStatus){
+                     return $.ajax({
+                        url: '/orders/change/'+id,
+                        data:{status: statusList.value},
+                        method:'POST'
+                     })
+                  }else{
+                     swal.stopLoading();
+                     swal.close();
+                  }
+               }).then(function(res){
+                  console.log(res);
+                  if(res && res.success){
+                     $('td[id="status_col_'+id+'"]').html(
+                        '<button onclick="changeStatus('+id+')" class="btn status '+statusList.value+'">'+statusLocalization[statusList.value]+'</button>'
+                     );
+                     ordersList.forEach(function(order, key){
+                        if(order.id == id){
+                           ordersList[key].status = statusList.value;
+                        }
+                     })
+                     order
+                     swal({
+                        title: "{{__('Successfully')}}",
+                        icon: 'success',
+                     });
+                  }
+               })
+            
          }
       </script>
 
