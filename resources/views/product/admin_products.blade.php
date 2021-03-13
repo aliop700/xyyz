@@ -155,7 +155,7 @@
                               '<td>'+(lang == 'en' ? product.name : product.name_ar)+'</td>'+
                               '<td>'+(lang == 'en' ? product.desc : product.desc_ar)+'</td>'+
                               '<td>'+product.price+'</td>'+
-                              '<td>'+product.car.car_name+'</td>'+
+                              '<td>'+(product.car && product.car.car_name)+'</td>'+
                               '<td> <i class="fa fa-trash btn danger" onclick="deleteProduct('+product.id+')" tooltip-title="Delete" title="Delete"></i></td>'+
                            '</tr>'
                         )
